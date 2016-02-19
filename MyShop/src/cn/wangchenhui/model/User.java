@@ -2,6 +2,11 @@ package cn.wangchenhui.model;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author Dust
+ * @date 2016-2-19 下午4:46:17
+ */
 public class User {
 	private int user_id;
 	private String user_name;

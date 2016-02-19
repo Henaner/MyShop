@@ -99,7 +99,7 @@ create table orders
 /*==============================================================*/
 create table user
 (
-   user_id              int not null comment '用户id',
+   user_id              int not null comment '用户id' auto_increment,
    user_name            varchar(30) comment '用户名',
    user_pass            varchar(30) comment '用户密码',
    user_gender          varchar(1) comment '用户性别',
