@@ -16,7 +16,7 @@
 		<img src="<%=request.getContextPath()%>/images/admin_top_text.png" style="width:290px;height:69px;">
 	</div>
 	<div style="width:500px;height:30px;border-bottom-right-radius:15px;border-bottom-left-radius:15px;background:url(<%=request.getContextPath()%>/images/banner.jpg) no-repeat 0 center;margin-left:800px;margin-top:-20px;">
-		<h4 align="center" ><a href="#">商城首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">退出登录</a></h4>
+		<h4 align="center" ><a href="<%=request.getContextPath()%>/index.jsp" target="_top">商城首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/lockPages/admin/adminLogout.jsp" target="_top">退出登录</a></h4>
 	</div>
 	<div id="top_text" style="margin-top:30px;color:white;margin-left:1000px;">
 		管理员您好,今天是<%=dateString %>

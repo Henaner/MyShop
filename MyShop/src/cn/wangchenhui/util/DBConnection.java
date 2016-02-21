@@ -15,10 +15,13 @@ public class DBConnection {
 		String password = properties.getProperty("password");
 		String url = properties.getProperty("url");
 		try{
-			//Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(url,username,password);
 			
 		}catch(SQLException e){
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;

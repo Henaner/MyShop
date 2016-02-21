@@ -94,10 +94,10 @@ public class UserDao implements IUserDao{
 		int pageSize = SystemContext.getPageSize();
 		int pageOffset = SystemContext.getPageOffset();
 		List<User> list = new ArrayList<User>();
-		conn = DBConnection.getConnection();
-		String querySql = "select * from user ";
-		querySql += "limit ?, ?";
 		try {
+			conn = DBConnection.getConnection();
+			String querySql = "select * from user";
+			querySql += " limit ?,?";
 			pstat = conn.prepareStatement(querySql);
 			pstat.setInt(1, pageOffset);
 			pstat.setInt(2, pageSize);
@@ -139,7 +139,7 @@ public class UserDao implements IUserDao{
 			DBConnection.close(pstat);
 			DBConnection.close(rs);
 		}
-		
+		pages.setData(list);
 		return pages;
 	}
 	

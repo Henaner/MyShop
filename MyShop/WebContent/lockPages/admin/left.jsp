@@ -12,15 +12,19 @@
 		<!-- 图片轮播 -->
 		<div style="cursor:pointer;" id="left_div_slide" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>图片轮播管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_slide_panel" class="left_div_panel" align="center">
-				<br><br>
+		<br>
 				<a href="<%=request.getContextPath()%>/lockPages/admin/imgSlide.jsp" target="main">图片轮播管理</a><br>
-				<a href="#">图片轮播管理</a><br>
-				<a href="#">图片轮播管理</a><br>
+		</div>
+		<!-- 用户管理 -->
+		<div style="cursor:pointer;" id="left_div_user" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商城会员管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
+		<div id="left_div_user_panel" class="left_div_panel" align="center">
+		<br>
+				<a href="<%=request.getContextPath()%>/lockPages/user/userList.jsp" target="main">商城会员管理</a><br>
 		</div>
 		<!-- 用户订单 -->
 		<div style="cursor:pointer;" id="left_div_order" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>用户订单管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_order_panel" class="left_div_panel" align="center">
-				<br><br>
+				<br>
 				<a href="#">用户订单管理</a><br>
 				<a href="#">用户订单管理</a><br>
 				<a href="#">用户订单管理</a><br>
@@ -28,7 +32,7 @@
 		<!-- 商品管理 -->
 		<div style="cursor:pointer;" id="left_div_goods" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商品管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_goods_panel" class="left_div_panel"  align="center">
-				<br><br>
+				<br>
 				<a href="#">商品管理</a><br>
 				<a href="#">商品管理</a><br>
 				<a href="#">商品管理</a><br>
@@ -36,7 +40,7 @@
 		<!-- 公告管理 -->
 		<div style="cursor:pointer;" id="left_div_notice" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商城公告管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_notice_panel" class="left_div_panel" align="center">
-				<br><br>
+				<br>
 				<a href="#">商城公告管理</a><br>
 				<a href="#">商城公告管理</a><br>
 				<a href="#">商城公告管理</a><br>
@@ -44,7 +48,7 @@
 		<!-- 操作员管理 -->
 		<div style="cursor:pointer;" id="left_div_opt" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>操作员管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_opt_panel" class="left_div_panel"  align="center">
-				<br><br>
+				<br>
 				<a href="#">操作员管理</a><br>
 				<a href="#">操作员管理</a><br>
 				<a href="#">操作员管理</a><br>
@@ -52,7 +56,7 @@
 		<!-- 评价管理 -->
 		<div style="cursor:pointer;" id="left_div_evaluate" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>用户评价管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div  id="left_div_evaluate_panel" class="left_div_panel" align="center">
-				<br><br>
+				<br>
 				<a href="#">用户评价管理</a><br>
 				<a href="#">用户评价管理</a><br>
 				<a href="#">用户评价管理</a><br>
@@ -90,6 +94,17 @@
 					$("#left_div_slide #arrow").attr("src","<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png");
 				}else{
 					$("#left_div_slide #arrow").attr("src","<%=request.getContextPath()%>/images/icon/backstage/Arrow_Down_24px_523786_easyicon.net.png");
+				}
+			});		
+		});
+		
+		
+		$("#left_div_user").click(function(){
+			$("#left_div_user_panel").slideToggle("slow",function(){
+				if($(this).is(":hidden")){
+					$("#left_div_user #arrow").attr("src","<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png");
+				}else{
+					$("#left_div_user #arrow").attr("src","<%=request.getContextPath()%>/images/icon/backstage/Arrow_Down_24px_523786_easyicon.net.png");
 				}
 			});		
 		});

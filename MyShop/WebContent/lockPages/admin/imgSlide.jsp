@@ -19,6 +19,17 @@
 					<td><input type="text" name="img_title" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>(带有*的内容为必填项)</td>
 				</tr>
 				<tr>
+					<td>轮播数量</td>
+					<td>
+						<select name="slide_count" style="width:275px;height:28px;border-radius:5px;border:solid 1px #CCCCCC;">
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="5">6</option>
+						</select><font color="red">*</font>默认展示3张
+					</td>
+				</tr>
+				<tr>
 					<td>上传图片</td>
 					<td>
 						<div class="uploader green">

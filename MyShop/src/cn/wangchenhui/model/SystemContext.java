@@ -15,7 +15,7 @@ public class SystemContext {
 		pageSize.set(_pageSize);
 	}
 	public static int getPageSize(){
-		return pageOffset.get();
+		return pageSize.get();
 	}
 	public static void removePageSize(){
 		pageSize.remove();
@@ -33,4 +33,7 @@ public class SystemContext {
 	public static void removePageOffset(){
 		pageOffset.remove();
 	}
+	
+	
+	
 }

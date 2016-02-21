@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="../css/main.css">
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 <title>家乡味后台登录</title>
 </head>
-<body style="background: url(../images/adminBG.png);">
-	<div class="div_login">
+<body style="background: url(<%=request.getContextPath() %>/images/adminBG.png);">
+	<div class="div_admin_login">
 		<form action="" method="post">
-			<table align="center" style="margin-top: 360px;">
+			<table align="center" style="margin-top:340px;margin-left:580px;">
 				<tr>
 					<td>账号&nbsp;</td>
 					<td><input type="text" name="userName"></td>
@@ -20,9 +20,18 @@
 					<td>密码&nbsp;</td>
 					<td><input type="password" name="userPass"></td>
 				</tr>
-				<tr align="right">
-					<th colspan="2"><input type="submit" class="btn_login"
-						value="登录"> <input type="reset" class="btn_login"
+				<tr>
+					<td>验证码</td>
+					<td>
+						<input type="text" name="captcha" id="captcha"
+						class="captcha" size="4"  maxlength="4"><div style="position:absolute ;margin-top:-30px;margin-left:60px;"><img src="<%=request.getContextPath()%>/Captcha"
+						style="cursor: pointer;" title="单击刷新验证码" alt="单击刷新验证码"
+						onclick="this.src='<%=request.getContextPath()%>/Captcha?'+new Date().getTime();"></div>
+					</td>
+				</tr>
+				<tr align="center">
+					<th colspan="2"><input type="submit" class="admin_btn_login"
+						value="登录"> <input type="reset" class="admin_btn_login"
 						value="清空"></th>
 				</tr>
 			</table>

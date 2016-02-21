@@ -13,11 +13,13 @@
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
+  
   <!-- 404页面 -->
   <error-page>
   	<error-code>404</error-code>
   	<location>/pageNotFound.jsp</location>
   </error-page>
+  
   <!--分页管理-->
     <filter>
         <filter-name>SystemContextFilter</filter-name>

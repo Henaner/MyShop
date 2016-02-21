@@ -34,3 +34,16 @@
     <a href="<%=pageUrl%>">尾页</a>
   </pg:last>
 </pg:pager>
+<style>
+	a:link{ /*超链接正常状态下在样式*/
+		color:grey; /*灰色*/
+		text-decoration:none /*无下划线*/
+	} 
+	a:hover{/*控制鼠标移动上去变色*/
+		color:red ; /*红色*/
+		text-decoration:underline; 
+	}
+	a:visited{ /*访问过的链接颜色*/
+		color:grey; 
+	}
+</style>

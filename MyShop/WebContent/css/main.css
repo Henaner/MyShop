@@ -38,6 +38,9 @@
 	.userPass_login input{float:left;border:none;background:none;height:30px;line-height:30px;width:100%; text-indent:25px;}
 	.conform_login{margin-top:20px;}
 	.login_top{margin-left:1010px;margin-top:70px;}
+/*管理员登陆页面*/
+	.admin_btn_login{width:72px;height:30px;}
+	.admin_div_login{margin-top:20px;}
 /*注册页面*/
 	.div_register{margin-left:1020px;}
 	.item_div a:hover{border:1px;solid:#ddd;}
@@ -88,7 +91,7 @@
 	#goods_hot_list_5{margin-left:500px; margin-top:-320px;}
 	#goods_hot_list_6{margin-left:900px; margin-top:-320px;}
 	/*首页-新品*/
-	#goods_new{position:absolute;height:650px;}
+	#goods_new{position:absolute;height:500px;}
 	#goods_new_logo img{height:50px;width:230px;margin-top:30px;}
 	#goods_new_more{margin-top:-30px;margin-left:1200px;}
 	#goods_new_list{margin-top:10px;margin-left:60px;width:98.3%;height:740px;border:solid 1px #9D2A29;}

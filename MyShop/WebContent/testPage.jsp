@@ -19,7 +19,7 @@
 		int totalPage = pages.getTotalPage();
 		int totalRecord = pages.getTotalRecord();
 	%>
-	<table width="80%" align="center">
+	<table width="90%" align="center" border="1">
 		<tr>
 			<td>id</td>
 			<td>用户名</td>
@@ -58,7 +58,10 @@
 		%>
 		<tr>
 			<td colspan="13">
-				<jsp:include page="/lockPages/pager/pager.jsp"></jsp:include>
+				<jsp:include page="/lockPages/pager/pager.jsp">
+					<jsp:param value="<%=totalPage %>" name="totalPage"></jsp:param>
+					<jsp:param value="<%=totalRecord %>" name="totalRecord"></jsp:param>
+				</jsp:include>
 			</td>
 		</tr>
 	</table>

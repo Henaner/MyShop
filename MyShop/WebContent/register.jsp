@@ -72,9 +72,10 @@
 				<tr>
 					<td>验证码</td>
 					<td><input type="text" name="captcha" id="captcha"
-						class="captcha" size="4" placeholder="验证码"><div class="captcha_div"><img src="Captcha"
+						class="captcha" size="4" placeholder="验证码" maxlength="4"><div class="captcha_div"><img src="Captcha"
 						style="cursor: pointer;" title="单击刷新验证码" alt="单击刷新验证码"
-						onclick="this.src='Captcha?'+new Date().getTime();"></div></td>
+						onclick="this.src='Captcha?'+new Date().getTime();"></div>
+					</td>
 				</tr>
 				<tr>
 					<td><input type="checkbox" name="iCheck" id="item" class="item"></td>

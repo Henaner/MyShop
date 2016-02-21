@@ -17,7 +17,7 @@
 			<div id="banner_search">
 				<div id="banner_search_img"></div>
 				<div id="banner_search_input"><input type="text"  size="50" placeholder="请输入关键词:  如小磨香油"></div>
-				<div id="banner_search_btn"><button type="submit" style="width:40px;height:30px;background-color:transparent;cursor:pointer;"></button></div>
+				<div id="banner_search_btn"><button type="submit" style="width:40px;height:30px;border:none;background-color:transparent;cursor:pointer;"></button></div>
 			</div>
 		</form>
 		<div id="banner_cart" style="cursor:pointer;">
