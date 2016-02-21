@@ -59,5 +59,6 @@
 	<classpathentry kind="lib" path="D:/Program Files/apache-tomcat-7.0.63/lib/tomcat-util.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/apache-tomcat-7.0.63/lib/websocket-api.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files/OtherJars/pager-taglib-2.0/WEB-INF/lib/pager-taglib.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mybatis-3.3.1.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
