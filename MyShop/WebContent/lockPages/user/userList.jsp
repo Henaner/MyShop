@@ -35,14 +35,34 @@
 			<%
 				for(User user:pages.getData()){
 			%>
-			<tr id="table_content">
+			<tr id="table_content" align="center">
 				<td><%=user.getUser_name() %></td>
 				<td><%=user.getUser_gender() %></td>
 				<td><%=user.getBirthday() %></td>
 				<td><%=user.getEmail() %></td>
 				<td><%=user.getTelphone() %></td>
-				<td><%=user.getType() %></td>
-				<td><%=user.getStatus() %></td>
+				<%
+					if(Integer.parseInt(user.getType())==0){
+				%>
+				<td>会员</td>
+				<%
+					}else{
+				%>
+				<td>管理员</td>
+				<%
+					}
+				%>
+				<%
+					if(Integer.parseInt(user.getStatus())==1){
+				%>
+				<td><a title= "单击更改为禁用" href="<%=request.getContextPath()%>/lockPages/user/disable.jsp?id=<%=user.getUser_id()%>">启用</a></td>
+				<%
+					}else{
+				%>
+				<td><a title= "单击更改为启用" href="<%=request.getContextPath()%>/lockPages/user/enable.jsp?id=<%=user.getUser_id()%>">禁用</a></td>
+				<%
+					}
+				%>
 				<td><%=user.getOpt_status() %></td>
 				<td><%=user.getIs_operator() %></td>
 				<td><%=user.getIs_admin() %></td>

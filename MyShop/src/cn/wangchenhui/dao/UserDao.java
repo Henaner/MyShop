@@ -80,7 +80,40 @@ public class UserDao implements IUserDao{
 	@Override
 	public User load(int user_id) {
 		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		PreparedStatement pstat = null;
+		ResultSet rs = null;
+		User user = null;
+		conn = DBConnection.getConnection();
+		String sql = "select * from user where user_id=?";
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setInt(1, user_id);
+			rs = pstat.executeQuery();
+			while(rs.next()){
+				user = new User();
+				user.setUser_id(rs.getInt(user_id));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_pass(rs.getString("user_pass"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setAddress(rs.getString("address"));
+				user.setBirthday(rs.getDate("birthday"));
+				user.setTelphone(rs.getString("telphone"));
+				user.setEmail(rs.getString("email"));
+				user.setType(rs.getString("type"));
+				user.setIs_operator(rs.getString("is_operator"));
+				user.setIs_admin(rs.getString("is_admin"));
+				user.setOpt_status(rs.getString("opt_status"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+			DBConnection.close(rs);
+		}
+		return user;
 	}
 
 	@Override

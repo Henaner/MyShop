@@ -23,7 +23,7 @@ import cn.wangchenhui.model.User;
 public class TestMybatis {
 	public static void main(String[] args) {
 		try {
-			InputStream inputStream = Resources.getResourceAsStream("mybatis_config.xml");
+			InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
 			SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
 			SqlSession session = factory.openSession();
 			User user = new User();
