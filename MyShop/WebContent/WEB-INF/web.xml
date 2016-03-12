@@ -9,28 +9,23 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
-  
-  <!-- 404页面 -->
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/pageNotFound.jsp</location>
+    <error-code>404</error-code>
+    <location>/pageNotFound.jsp</location>
   </error-page>
-  
-  <!--分页管理-->
-    <filter>
-        <filter-name>SystemContextFilter</filter-name>
-        <filter-class>cn.wangchenhui.filter.SystemContextFilter</filter-class>
-        <init-param>
-            <param-name>pageSize</param-name>
-            <param-value>15</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>SystemContextFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+  <filter>
+    <filter-name>SystemContextFilter</filter-name>
+    <filter-class>cn.wangchenhui.filter.SystemContextFilter</filter-class>
+    <init-param>
+      <param-name>pageSize</param-name>
+      <param-value>15</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SystemContextFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

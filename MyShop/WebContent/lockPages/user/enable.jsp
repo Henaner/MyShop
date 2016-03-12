@@ -12,5 +12,6 @@
 	User user = userDao.load(id);
 	user.setStatus("1");
 	userDao.update(user);
+	System.out.println("状态修改成功：enable");
 	response.sendRedirect("userList.jsp");
 %>

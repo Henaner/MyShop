@@ -153,4 +153,26 @@ alter table orders add constraint FK_order_goods_id foreign key (goods_id)
 
 alter table orders add constraint FK_order_user_id foreign key (user_id)
       references user (user_id) on delete restrict on update restrict;
+drop table if exists slider_img;
+
+/*==============================================================*/
+/* Table: slider_img                                            */
+/*==============================================================*/
+create table slider_img
+(
+   img_id               int not null comment '滚播图片的id' auto increment,
+   img_title            varchar(255) comment '滚播图片的展示标题',
+   img_type             varchar(255) comment '滚播图片的类型',
+   img_path             varchar(255) comment '滚播图片的存储路径',
+   goods_id             varchar(255) comment '滚播图片绑定的商品id',
+   display_count        int comment '滚播图片设置的数量',
+   post_date            date comment '滚播图片设置的日期',
+   user_id              int comment '设置滚播图片的用户id',
+   primary key (img_id)
+);
+alter table slider_img add constraint FK_slider_goods_key foreign key (goods_id)
+      references goods (goods_id) on delete restrict on update restrict;
+
+alter table slider_img add constraint FK_slider_user_key foreign key (user_id)
+      references user (user_id) on delete restrict on update restrict;
 

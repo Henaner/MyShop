@@ -5,4 +5,8 @@ public class DaoFactory {
 	public static IUserDao getUserDao(){
 		return new UserDao();
 	}
+	/*静态工厂调用ImageDao*/
+	public static ISliderDao getSliderDao(){
+		return new SliderDao();
+	} 
 }

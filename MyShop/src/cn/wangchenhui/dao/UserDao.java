@@ -62,6 +62,35 @@ public class UserDao implements IUserDao{
 	@Override
 	public void update(User user) {
 		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstat = null;
+		conn = DBConnection.getConnection();
+		int id = user.getUser_id();
+		String sql = "update user set user_name=?,user_pass=?,user_gender=?,birthday=?,address=?,telphone=?,email=?,type=?,status=?,is_operator=?,opt_status=?,is_admin=? where user_id = ?";
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, user.getUser_name());
+			pstat.setString(2, user.getUser_pass());
+			pstat.setString(3, user.getUser_gender());
+			pstat.setDate(4, (Date) user.getBirthday());
+			pstat.setString(5, user.getAddress());
+			pstat.setString(6, user.getTelphone());
+			pstat.setString(7, user.getEmail());
+			pstat.setString(8, user.getType());
+			pstat.setString(9, user.getStatus());
+			pstat.setString(10, user.getIs_operator());
+			pstat.setString(11, user.getOpt_status());
+			pstat.setString(12, user.getIs_admin());
+			pstat.setInt(13, id);
+			pstat.executeUpdate();
+			System.out.println(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+		}
 		
 	}
 
@@ -92,7 +121,7 @@ public class UserDao implements IUserDao{
 			rs = pstat.executeQuery();
 			while(rs.next()){
 				user = new User();
-				user.setUser_id(rs.getInt(user_id));
+				user.setUser_id(rs.getInt("user_id"));
 				user.setUser_name(rs.getString("user_name"));
 				user.setUser_pass(rs.getString("user_pass"));
 				user.setUser_gender(rs.getString("user_gender"));

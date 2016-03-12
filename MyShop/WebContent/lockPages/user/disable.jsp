@@ -10,5 +10,6 @@
 	User user = userDao.load(id);
 	user.setStatus("0");
 	userDao.update(user);
+	System.out.println("状态修改成功：disable");
 	response.sendRedirect("userList.jsp");
 %>

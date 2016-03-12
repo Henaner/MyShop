@@ -10,27 +10,28 @@
 <body>
 <jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 <br><br>
-	<form action="imgSlideSetup.jsp" method="post">
+	<form action="#到时候这个里面用其他的来上传" method="post">
 		<div align="center" style="width:90%;height:450px;border:solid 1px #7F0101;margin-left:60px;margin-top:10px;">
 		<div><img src="<%=request.getContextPath()%>/images/banner.jpg" style="width:100%;height:50px;"><p style="color:red;margin-top:-30px;">注意图片的尺寸是1920*600的格式</p></div>
 			<table align="center" style="margin-top:80px;">
 				<tr>
-					<td>图片标题</td>
+					<td>图片标题&nbsp;&nbsp;</td>
 					<td><input type="text" name="img_title" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>(带有*的内容为必填项)</td>
 				</tr>
+				<!--这个功能等以后自己有时间再去实现
 				<tr>
-					<td>轮播数量</td>
+					<td>轮播数量&nbsp;&nbsp;</td>
 					<td>
 						<select name="slide_count" style="width:275px;height:28px;border-radius:5px;border:solid 1px #CCCCCC;">
 							<option value="3">3</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
-							<option value="5">6</option>
 						</select><font color="red">*</font>默认展示3张
 					</td>
 				</tr>
+				-->
 				<tr>
-					<td>上传图片</td>
+					<td>上传图片&nbsp;&nbsp;</td>
 					<td>
 						<div class="uploader green">
 							<input type="text" class="filename" readonly="readonly"/>
@@ -38,6 +39,10 @@
 							<input type="file" size="30"/>
 						</div>
 					</td>
+				</tr>
+				<tr>
+					<td>绑定商品&nbsp;&nbsp;</td>
+					<td><input type="text" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>绑定上架商品的id</td>
 				</tr>
 				<tr height="200px;">
 					<td colspan="2" align="center">

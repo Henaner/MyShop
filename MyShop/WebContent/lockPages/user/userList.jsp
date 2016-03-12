@@ -20,18 +20,26 @@
 	<jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 	<div align="center" style="position:absolute;width:98%;height:450px;border:solid 1px #7F0101;margin-left:2px;margin-top:50px;">
 		<table align="center">
-			<thead id="table_title">
-				<th>用户名</th>
-				<th>性别</th>
-				<th>生日</th>
-				<th>邮箱</th>
-				<th>电话</th>
-				<th>类型</th>
-				<th>状态</th>
-				<th>操作员状态</th>
-				<th>是否是操作员</th>
-				<th>是否是管理员</th>
-			</thead>
+			<tr>
+				<td colspan="3">请输入用户名或者联系方式(邮箱|手机号)进行查找：</td>
+				<td colspan="9" align="left" valign="top">
+					<form action="" method="post">
+						<input type="text" name="condition" size="80">&nbsp;&nbsp;<input type="submit" style="width:60px;height:25px;background: #9D2A29;color:white;border-radius:5px;cursor:pointer;" value="查找">
+					</form>
+				</td>
+			</tr>
+			<tr id="table_title" align="center">
+				<td>用户名</td>
+				<td>性别</td>
+				<td>生日</td>
+				<td>邮箱</td>
+				<td>电话</td>
+				<td>类型</td>
+				<td>状态</td>
+				<td>操作员状态</td>
+				<td>是否是操作员</td>
+				<td>是否是管理员</td>
+			</tr>
 			<%
 				for(User user:pages.getData()){
 			%>
@@ -81,12 +89,12 @@
 </body>
 <style>
 	table{width:100%; border-collapse:collapse ;}
-	thead{background:#9D2A29;color:white;}
+	#table_title{background:#9D2A29;color:white;}
 	#table_content{border:solid 1px #9D2A29;};
 </style>
 <script type="text/javascript">
 	$(document).ready(function(e){
-		$("tr:gt(0)").mouseover(function(){
+		$("tr:gt(1)").mouseover(function(){
 			$(this).css("background","#CC6666");
 		});
 		$("tr").mouseout(function(){

@@ -174,7 +174,7 @@ $(document).ready(function(e) {
 	$("#goods_hot_list_3").mouseleave(function(){
 		$("#goods_hot_list_3").css("border","solid 1px #EEEEEE");
 		$("#goods_hot_list_3 input").css("border","solid 1px #EEEEEE");
-		$("#goods_title_hot_3").css("display","block");
+		$("#goods_title_hot_3").css("display","none");
 	});
 	
 	
@@ -290,5 +290,6 @@ $(document).ready(function(e) {
 	});
 	
 });
+
 </script>
 </html>
