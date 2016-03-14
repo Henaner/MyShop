@@ -30,7 +30,7 @@ public class TestMybatis {
 			user.setUser_name("user101");
 			user.setUser_pass("xeb3rt");
 			user.setUser_gender("女");
-			user.setBirthday(new Date());
+			user.setBirthday("1992-06-22");
 			user.setAddress("Henan Province");
 			user.setEmail("565999928@qq.com");
 			user.setIs_admin("N");

@@ -10,4 +10,5 @@ public interface IUserDao {
 	User login(String user_name,String user_pass);
 	User load(int user_id);
 	Pager<User> list();
+	User login(String username);
 }

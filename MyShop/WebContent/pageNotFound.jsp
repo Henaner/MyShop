@@ -7,8 +7,6 @@
 <title>页面跳转</title>
 </head>
 <body>
-	<%
-		response.sendRedirect("./404.jsp");
-	%>
+	<jsp:forward page="./404.jsp"></jsp:forward>
 </body>
 </html>

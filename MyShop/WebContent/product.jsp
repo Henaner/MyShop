@@ -13,7 +13,7 @@
 	<!-- 导入header部分 -->
 	<div id="include_header_bannner">
 		<div id="include_header">
-			<jsp:include page="header.jsp"></jsp:include>
+			<jsp:include page="/lockPages/user/header.jsp"></jsp:include>
 		</div>
 	</div>
 	<!-- 这里控制的是图片的展示，已经加入购物车和购买的功能 -->

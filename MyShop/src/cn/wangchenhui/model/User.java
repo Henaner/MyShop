@@ -12,7 +12,7 @@ public class User {
 	private String user_name;
 	private String user_pass;
 	private String user_gender;
-	private Date birthday;
+	private String birthday;
 	private String address;
 	private String telphone;
 	private String email;
@@ -45,10 +45,10 @@ public class User {
 	public void setUser_gender(String user_gender) {
 		this.user_gender = user_gender;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getAddress() {

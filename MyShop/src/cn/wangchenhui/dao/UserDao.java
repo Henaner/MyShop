@@ -39,7 +39,7 @@ public class UserDao implements IUserDao{
 			pstat.setString(1,user.getUser_name());
 			pstat.setString(2,user.getUser_pass());
 			pstat.setString(3,user.getUser_gender());
-			pstat.setDate(4,(Date) user.getBirthday());
+			pstat.setString(4,user.getBirthday());
 			pstat.setString(5,user.getAddress());
 			pstat.setString(6,user.getTelphone());
 			pstat.setString(7,user.getEmail());
@@ -72,7 +72,7 @@ public class UserDao implements IUserDao{
 			pstat.setString(1, user.getUser_name());
 			pstat.setString(2, user.getUser_pass());
 			pstat.setString(3, user.getUser_gender());
-			pstat.setDate(4, (Date) user.getBirthday());
+			pstat.setString(4, user.getBirthday());
 			pstat.setString(5, user.getAddress());
 			pstat.setString(6, user.getTelphone());
 			pstat.setString(7, user.getEmail());
@@ -100,12 +100,90 @@ public class UserDao implements IUserDao{
 		
 	}
 
-	@Override
-	public User login(String user_name, String user_pass) {
+	
+	public User login(String user_name) {
 		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		User user = null;
+		conn = DBConnection.getConnection();
+		String sql = "select * from user where user_name =? ";
+		try {
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, user_name);
+			rs = stat.executeQuery();
+			while(rs.next()){
+				user = new User();
+				user.setUser_id(rs.getInt("user_id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_pass(rs.getString("user_pass"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setBirthday(rs.getString("birthday"));
+				user.setAddress(rs.getString("address"));
+				user.setTelphone(rs.getString("telphone"));
+				user.setEmail(rs.getString("email"));
+				user.setType(rs.getString("type"));
+				user.setStatus(rs.getString("status"));
+				user.setIs_operator(rs.getString("is_operator"));
+				user.setOpt_status(rs.getString("opt_status"));
+				user.setIs_admin(rs.getString("is_admin"));
+			}
+			
+			//判断一下用户的状态
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(rs);
+			DBConnection.close(stat);
+		}
+		return user;
 	}
 
+	public User login(String user_name, String user_pass) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;
+		User user = null;
+		conn = DBConnection.getConnection();
+		String sql = "select * from user where user_name =? ";
+		try {
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, user_name);
+			rs = stat.executeQuery();
+			while(rs.next()){
+				user = new User();
+				user.setUser_id(rs.getInt("user_id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_pass(rs.getString("user_pass"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setBirthday(rs.getString("birthday"));
+				user.setAddress(rs.getString("address"));
+				user.setTelphone(rs.getString("telphone"));
+				user.setEmail(rs.getString("email"));
+				user.setType(rs.getString("type"));
+				user.setStatus(rs.getString("status"));
+				user.setIs_operator(rs.getString("is_operator"));
+				user.setOpt_status(rs.getString("opt_status"));
+				user.setIs_admin(rs.getString("is_admin"));
+			}
+			
+			//判断一下用户的状态
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(rs);
+			DBConnection.close(stat);
+		}
+		return user;
+	}
 	@Override
 	public User load(int user_id) {
 		// TODO Auto-generated method stub
@@ -126,7 +204,7 @@ public class UserDao implements IUserDao{
 				user.setUser_pass(rs.getString("user_pass"));
 				user.setUser_gender(rs.getString("user_gender"));
 				user.setAddress(rs.getString("address"));
-				user.setBirthday(rs.getDate("birthday"));
+				user.setBirthday(rs.getString("birthday"));
 				user.setTelphone(rs.getString("telphone"));
 				user.setEmail(rs.getString("email"));
 				user.setType(rs.getString("type"));
@@ -170,7 +248,7 @@ public class UserDao implements IUserDao{
 				user.setUser_name(rs.getString("user_name"));
 				user.setUser_pass(rs.getString("user_pass"));
 				user.setUser_gender(rs.getString("user_gender"));
-				user.setBirthday(rs.getDate("birthday"));
+				user.setBirthday(rs.getString("birthday"));
 				user.setTelphone(rs.getString("telphone"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));

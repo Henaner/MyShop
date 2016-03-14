@@ -1,3 +1,4 @@
+<%@page import="cn.wangchenhui.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,11 +10,33 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	<div style="width:100%;height:50px;background-color:#F2F2F2;" id="header_div">
+<%
+	User loginUser =(User)session.getAttribute("loginUser");
+%>
+	<div style="position:absolute;width:110%;height:50px;margin-top:0px;background-color:#F2F2F2;" id="header_div">
 		<div id="welcome_words">嗨！欢迎您来到家乡味商城</div>
-		<div id="index_opt"><img src="<%=request.getContextPath() %>/images/icon/login.png" style="height:14px;width:14px;"><a href="login.jsp">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<img src="<%=request.getContextPath() %>/images/icon/register.png" style="height:14px;width:14px;"><a href="register.jsp">注册</a></div>
+		<div id="index_opt" style="margin-left:1100px;">
+		<%
+			if(loginUser==null){
+		%>
+			<img src="<%=request.getContextPath() %>/images/icon/login.png" style="height:14px;width:14px;">
+			<a href="login.jsp">登录</a>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<img src="<%=request.getContextPath() %>/images/icon/register.png" style="height:14px;width:14px;">
+			<a href="register.jsp">注册</a>
+		<%
+			}else{
+		%>
+			<a href="<%=request.getContextPath() %>/lockPages/user/userProfile.jsp"><%=loginUser.getUser_name() %></a>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<img src="<%=request.getContextPath() %>/images/icon/exit.png" style="height:14px;width:14px;">
+			<a href="<%=request.getContextPath()%>/logout.jsp">退出</a>
+		<%
+			}
+		%>
+		</div>
 		<div id="banner_year"><a href="#" title="新年快乐" alt="新年快乐"><img src="<%=request.getContextPath() %>/images/banner_year.png"></a></div>
-		<form id="search_form" action="doSearch" method="get">
+		<form id="search_form" action="doSearch.jsp" method="get">
 			<div id="banner_search">
 				<div id="banner_search_img"></div>
 				<div id="banner_search_input"><input type="text"  size="50" placeholder="请输入关键词:  如小磨香油"></div>

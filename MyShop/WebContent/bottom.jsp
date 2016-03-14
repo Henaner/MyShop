@@ -5,10 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/top.css">
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/top.js"></script>
 <title>Copyright</title>
 </head>
 <body>
+	<!-- 返回顶部 -->
+	<a href="#" onclick="gotoTop();return false;" class="totop"></a>
 	<div id="copyright">
 		<hr  id="copyright_hr" style="width:105%;height:1px;border:none;border-top:2px dotted #E50B0B;">
 			<div id="shopping_ensure">
@@ -111,7 +114,7 @@
 			<div id="statemet_text">Copyright © 2008-2016 家乡味-王晨辉 版权所有  <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">豫ICP备15028016号-1</a> 增值电信业务经营许可证:豫ICP备15028016号</div>
 			<div id="statement_img" align="center"><a href="http://t.knet.cn/index_new.jsp"><img style="width:160px;height:90px;" src="<%=request.getContextPath() %>/images/icon/trusted.jpg"></a>&nbsp;&nbsp;<a href="http://www.szfw.org/"><img id="honest_img" style="width:160px;height:72px;" src="<%=request.getContextPath() %>/images/icon/honest.png"></a></div>
 		</div>
-		<div id="qrcode_big" style="height:145px;width:145px;border:solid 1px red; display:none;margin-left:670px;margin-top:-280px;"><img style="height:145px;width:145px;" alt="加入我们有更多的优惠哦" title="加入我们有更多的优惠哦" src="<%=request.getContextPath() %>/images/icon/qr.png"></div>
+		<div id="qrcode_big" style="height:145px;width:145px;border:solid 1px red; display:none;margin-left:670px;margin-top:-265px;"><img style="height:145px;width:145px;" alt="加入我们有更多的优惠哦" title="加入我们有更多的优惠哦" src="<%=request.getContextPath() %>/images/icon/qr.png"></div>
 	</div>
 	<!-- 控制鼠标放到二维码上的放大效果 -->
 	<script type="text/javascript">

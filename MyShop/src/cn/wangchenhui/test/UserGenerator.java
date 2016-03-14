@@ -20,7 +20,7 @@ public class UserGenerator {
 			user.setUser_name("username_"+i);
 			user.setUser_pass(getRandomString(6));
 			user.setUser_gender(getRandomGender());
-			user.setBirthday(new Date(i));
+			user.setBirthday("1992-06-22");
 			user.setTelphone("18721686821");
 			user.setAddress("Henan Province");
 			user.setEmail("565999928@qq.com");
