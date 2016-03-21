@@ -208,6 +208,7 @@ public class UserDao implements IUserDao{
 				user.setTelphone(rs.getString("telphone"));
 				user.setEmail(rs.getString("email"));
 				user.setType(rs.getString("type"));
+				user.setStatus(rs.getString("status"));
 				user.setIs_operator(rs.getString("is_operator"));
 				user.setIs_admin(rs.getString("is_admin"));
 				user.setOpt_status(rs.getString("opt_status"));
@@ -224,7 +225,7 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public Pager<User> list() {   //到时候这个里面可以传入筛选的条件
+	public Pager<User> list(String condition) {   //到时候这个里面可以传入筛选的条件
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement  pstat = null;
@@ -236,9 +237,14 @@ public class UserDao implements IUserDao{
 		List<User> list = new ArrayList<User>();
 		try {
 			conn = DBConnection.getConnection();
-			String querySql = "select * from user";
-			querySql += " limit ?,?";
-			pstat = conn.prepareStatement(querySql);
+			String sql = "select * from user ";
+            String sqlCount = "select count(*) from user";
+            if(condition != null || !"".equals(condition.trim())){
+                sql+=" where user_name like'%"+condition+"%'";
+                sqlCount+=" where user_name  like'%"+condition+"%'";
+            }
+            sql += " limit ?,?";
+			pstat = conn.prepareStatement(sql);
 			pstat.setInt(1, pageOffset);
 			pstat.setInt(2, pageSize);
 			rs = pstat.executeQuery();
@@ -259,8 +265,74 @@ public class UserDao implements IUserDao{
 				user.setIs_admin(rs.getString("is_admin"));
 				list.add(user);
 			}
-			String countSql = "select count(*) from user ";
-			pstat = conn.prepareStatement(countSql);
+			/*计数*/
+            pstat = conn.prepareStatement(sqlCount);
+			rs = pstat.executeQuery();
+			rs = pstat.executeQuery();
+			int totalRecord = 0;
+			while(rs.next()){
+				totalRecord = rs.getInt(1);
+			}
+			int totalPage = (totalRecord-1)/pageSize+1;
+			pages.setTotalRecord(totalRecord);
+			pages.setTotalPage(totalPage);
+			pages.setPageSize(pageSize);
+			pages.setPageOffset(pageOffset);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+			DBConnection.close(rs);
+		}
+		pages.setData(list);
+		return pages;
+	}
+	
+	//操作员
+	public Pager<User> optList(String condition) {   //到时候这个里面可以传入筛选的条件
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement  pstat = null;
+		ResultSet rs = null;
+		User user = null;
+		Pager<User> pages = new Pager<User>();
+		int pageSize = SystemContext.getPageSize();
+		int pageOffset = SystemContext.getPageOffset();
+		List<User> list = new ArrayList<User>();
+		try {
+			conn = DBConnection.getConnection();
+			String sql = "select * from user where is_operator='Y' ";
+            String sqlCount = "select count(*) from user where is_operator='Y'";
+            if(condition != null || !"".equals(condition.trim())){
+                sql+=" and  user_name like'%"+condition+"%'";
+                sqlCount+=" and user_name  like'%"+condition+"%'";
+            }
+            sql += " limit ?,?";
+			pstat = conn.prepareStatement(sql);
+			pstat.setInt(1, pageOffset);
+			pstat.setInt(2, pageSize);
+			rs = pstat.executeQuery();
+			while(rs.next()){
+				user = new User();
+				user.setUser_id(rs.getInt("user_id"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_pass(rs.getString("user_pass"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setBirthday(rs.getString("birthday"));
+				user.setTelphone(rs.getString("telphone"));
+				user.setAddress(rs.getString("address"));
+				user.setEmail(rs.getString("email"));
+				user.setType(rs.getString("type"));
+				user.setStatus(rs.getString("status"));
+				user.setIs_operator(rs.getString("is_operator"));
+				user.setOpt_status(rs.getString("opt_status"));
+				user.setIs_admin(rs.getString("is_admin"));
+				list.add(user);
+			}
+			/*计数*/
+            pstat = conn.prepareStatement(sqlCount);
 			rs = pstat.executeQuery();
 			int totalRecord = 0;
 			while(rs.next()){

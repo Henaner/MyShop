@@ -1,3 +1,9 @@
+<%@page import="cn.wangchenhui.dao.IGoodsDao"%>
+<%@page import="cn.wangchenhui.model.Cart"%>
+<%@page import="java.util.List"%>
+<%@page import="cn.wangchenhui.dao.ICartDao"%>
+<%@page import="cn.wangchenhui.dao.DaoFactory"%>
+<%@page import="cn.wangchenhui.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +22,15 @@
 			<jsp:include page="/lockPages/user/header.jsp"></jsp:include>
 		</div>
 	</div>
+	
+	<%
+		User user = (User)session.getAttribute("loginUser");
+		int user_id = user.getUser_id();
+		ICartDao cartDao = DaoFactory.getCartDao();
+		List<Cart> list = cartDao.getList(user_id);
+		IGoodsDao  goodsDao = DaoFactory.getGoodsDao();
+		double amount = (double)cartDao.getAmout(user_id);
+	%>
 	<!-- 这里是购物车的展示区 -->
 	<hr style="position:absolute;width:90%;height:2px;border:none;border-top:2px dotted #9D2A29; margin-top:200px;margin-left:60px;">
 	<div  style="position: absolute;margin-top:210px;width:99%;margin-left:3px;">
@@ -30,68 +45,49 @@
 				<td>数量</td>
 				<td>操作</td>
 			</tr>
-			<tr align="center">
-				<td><img src="<%=request.getContextPath() %>/images/shuiguo.jpg" style="width:50px;height:50px;border:solid 1px #CCCCCC;"></td>
-				<td>特价好评山西特甜苹果</td>
-				<td>99.00</td>
-				<td>
-					<div style="position: absolute;margin-top:-10px;margin-left:50px;">
-							<div id="minus" style="position:absolute;margin-top:-5px;margin-left:5px;cursor:pointer;height:32px;width:32px;"><img id="minus_img" name ="minus_img" src="<%=request.getContextPath()%>/images/icon/minus.png"></div>
-							<div id="number" style="position:absolute;margin-top:-5px;margin-left:40px;"><input type="text" value="1" id = "num_wanted" name = "num_wanted" style="font-size:14px;text-align: center;" maxlength="2" size ="2"></div>
-							<div id="plus" style="position:absolute;margin-top:-5px;margin-left:84px;cursor:pointer;height:32px;width:32px;"><img id="plus_img" name ="plus_img" src="<%=request.getContextPath()%>/images/icon/plus.png"></div>
-					</div>
+			<%
+				if(cartDao.getCount(user_id) == 0){
+			%>
+			<tr align="center" style="border-bottom-style:none;">
+				<td align="center" colspan="5">
+					<img src="<%=request.getContextPath() %>/images/empty.png" style="height:100px;width:100px;">
 				</td>
-				<td><a href="#">删除</a></td>
 			</tr>
-			<tr align="center">
-				<td><img src="<%=request.getContextPath() %>/images/shuiguo.jpg" style="width:50px;height:50px;border:solid 1px #CCCCCC;"></td>
-				<td>特价好评山西特甜苹果</td>
-				<td>99.00</td>
-				<td>
-					<div style="position: absolute;margin-top:-10px;margin-left:50px;">
-							<div id="minus" style="position:absolute;margin-top:-5px;margin-left:5px;cursor:pointer;height:32px;width:32px;"><img id="minus_img" name ="minus_img" src="<%=request.getContextPath()%>/images/icon/minus.png"></div>
-							<div id="number" style="position:absolute;margin-top:-5px;margin-left:40px;"><input type="text" value="1" id = "num_wanted" name = "num_wanted" style="font-size:14px;text-align: center;" maxlength="2" size ="2"></div>
-							<div id="plus" style="position:absolute;margin-top:-5px;margin-left:84px;cursor:pointer;height:32px;width:32px;"><img id="plus_img" name ="plus_img" src="<%=request.getContextPath()%>/images/icon/plus.png"></div>
-					</div>
+			<tr align="center" style="border-top-style:none;">
+				<td colspan="5">
+					<font size="+3" color="#9D2A29">空空如也~~</font>
 				</td>
-				<td><a href="#">删除</a></td>
 			</tr>
+			<%
+				}else{
+			%>
+				
+			<%
+				for(Cart cart:list){
+			%>
 			<tr align="center">
-				<td width="20%"><img src="<%=request.getContextPath() %>/images/shuiguo.jpg" style="width:50px;height:50px;border:solid 1px #CCCCCC;"></td>
-				<td width="40%">特价好评山西特甜苹果</td>
-				<td width="10%">99.00</td>
-				<td width="20%">
-					<div style="position: absolute;margin-top:-10px;margin-left:50px;">
-							<div id="minus" style="position:absolute;margin-top:-5px;margin-left:5px;cursor:pointer;height:32px;width:32px;"><img id="minus_img" name ="minus_img" src="<%=request.getContextPath()%>/images/icon/minus.png"></div>
-							<div id="number" style="position:absolute;margin-top:-5px;margin-left:40px;"><input type="text" value="1" id = "num_wanted" name = "num_wanted" style="font-size:14px;text-align: center;" maxlength="2" size ="2"></div>
-							<div id="plus" style="position:absolute;margin-top:-5px;margin-left:84px;cursor:pointer;height:32px;width:32px;"><img id="plus_img" name ="plus_img" src="<%=request.getContextPath()%>/images/icon/plus.png"></div>
-					</div>
-				</td>
-				<td width="10%"><a href="#">删除</a></td>
+				<td><img src="<%=request.getContextPath() %>/upload/goodsImg/<%=goodsDao.load(cart.getGoods_id()).getImg_name() %>" style="height:50px;width:50px;"></td>
+				<td><%=goodsDao.load(cart.getGoods_id()).getGoods_title() %></td>
+				<td><%=goodsDao.load(cart.getGoods_id()).getPrice() %></td>
+				<td><%=cart.getCount() %>
+				<td><a href="<%=request.getContextPath()%>/lockPages/goods/delCart.jsp?id=<%=cart.getId()%>">删除</a></td>
 			</tr>
-			<tr align="center">
-				<td width="20%"><img src="<%=request.getContextPath() %>/images/shuiguo.jpg" style="width:50px;height:50px;border:solid 1px #CCCCCC;"></td>
-				<td width="40%">特价好评山西特甜苹果</td>
-				<td width="10%">99.00</td>
-				<td width="20%">
-					<div style="position: absolute;margin-top:-10px;margin-left:50px;">
-							<div id="minus" style="position:absolute;margin-top:-5px;margin-left:5px;cursor:pointer;height:32px;width:32px;"><img id="minus_img" name ="minus_img" src="<%=request.getContextPath()%>/images/icon/minus.png"></div>
-							<div id="number" style="position:absolute;margin-top:-5px;margin-left:40px;"><input type="text" value="1" id = "num_wanted" name = "num_wanted" style="font-size:14px;text-align: center;" maxlength="2" size ="2"></div>
-							<div id="plus" style="position:absolute;margin-top:-5px;margin-left:84px;cursor:pointer;height:32px;width:32px;"><img id="plus_img" name ="plus_img" src="<%=request.getContextPath()%>/images/icon/plus.png"></div>
-					</div>
-				</td>
-				<td width="10%"><a href="#">删除</a></td>
-			</tr>
+			<%
+				}
+			%>
+			<%
+				}
+			%>
 			<!-- 上面的两个tr是测试数据 -->
 		</table>
 		<div style="postion:relative;height:50px;width:90%;margin-left:60px;margin-top:0px;background-color:#9D2A29;color:white;font-size:20px;">
-			<div style="position:absolute;margin-left:60px; margin-top:12px;" ><a href="#">继续添加</a></div>
-			<div style="position:absolute;margin-left:600px;  margin-top:12px;">总金额：396￥</div>
-			<div style="position:absolute;margin-left:950px;margin-top:1px;"><input type="button" style="color:#9D2A29;height:47px;width:120px;font-size:18px;" value="去结算"></div>
+			<div style="position:absolute;margin-left:60px; margin-top:12px;" ><a href="<%=request.getContextPath()%>/index.jsp">添加商品</a></div>
+			<div style="position:absolute;margin-left:600px;  margin-top:12px;">总金额：<%=amount %>￥</div>
+			<div style="position:absolute;margin-left:950px;margin-top:1px;"><input type="button" onclick= "window.location.href='<%=request.getContextPath() %>/lockPages/goods/order.jsp?user_id=<%=user_id %>'" style="color:#9D2A29;height:47px;width:120px;font-size:18px;" value="去结算"></div>
 		</div>
 	</div>
 	<!-- 导入底部的版权页 -->
-	<div id="include_bottom">
+	<div id="include_bottom" style="position:absolute;margin-top:1500px;margin-left:150px;">
 			<jsp:include page="/bottom.jsp"></jsp:include>
 	</div>
 </body>

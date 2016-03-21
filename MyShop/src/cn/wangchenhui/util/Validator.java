@@ -129,8 +129,9 @@ public class Validator {
     }
  
     public static void main(String[] args) {
-        String username = "fdsdfsdj";
-        System.out.println(Validator.isUsername(username));
-        System.out.println(Validator.isChinese(username));
+//        String username = "fdsdfsdj";
+//        System.out.println(Validator.isUsername(username));
+//        System.out.println(Validator.isChinese(username));
+    	System.out.println(MD5Util.md5Encode("05050622"));
     }
 }

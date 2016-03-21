@@ -30,8 +30,14 @@ public class LoginCheckUtil {
 			flag = false;
 		}else{
 			user = userDao.login(username,userpass);
-			if(!userpass.equals(MD5Util.md5Encode(user.getUser_pass()))){
+			if(!user.getUser_pass().equals(MD5Util.md5Encode(userpass))){
 				errMsg.put("userpass","X");
+				flag = false;
+			}else{
+				if(user.getStatus().equals("0")){
+					errMsg.put("status","账户被锁定");
+					flag = false;
+				}
 			}
 		}
 		

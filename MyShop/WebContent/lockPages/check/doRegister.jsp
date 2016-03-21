@@ -36,7 +36,7 @@
 		try{
 			User user = new User();
 			user.setUser_name(username);
-			user.setUser_pass(userpass);
+			user.setUser_pass(MD5Util.md5Encode(userpass));
 			user.setUser_gender(usergender);
 			user.setBirthday(year+"-"+month+"-"+day);
 			user.setAddress(province+city+town);

@@ -1,3 +1,4 @@
+<%@page import="cn.wangchenhui.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.Calendar" %>
@@ -8,6 +9,7 @@
 	int month = calendar.get(Calendar.MONTH)+1;
 	int date = calendar.get(calendar.DATE);
 	String dateString = year+"年"+month+"月"+date+"日";
+	User loginOpt = (User)session.getAttribute("loginOpt");
 %>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css"> 
 <div id="admin_top_div" style="background:url(<%=request.getContextPath()%>/images/admin_top_banner.png) no-repeat 0 center;width:120%;height:100px;margin-top:-10px;margin-left:-10px;position: absolute;">
@@ -16,9 +18,9 @@
 		<img src="<%=request.getContextPath()%>/images/admin_top_text.png" style="width:290px;height:69px;">
 	</div>
 	<div style="width:500px;height:30px;border-bottom-right-radius:15px;border-bottom-left-radius:15px;background:url(<%=request.getContextPath()%>/images/banner.jpg) no-repeat 0 center;margin-left:800px;margin-top:-20px;">
-		<h4 align="center" ><a href="<%=request.getContextPath()%>/index.jsp" target="_top">商城首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">修改密码</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/lockPages/admin/adminLogout.jsp" target="_top">退出登录</a></h4>
+		<h4 align="center" ><a href="<%=request.getContextPath()%>/index.jsp" target="_blank">商城首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/lockPages/admin/adminLogout.jsp" target="_top">退出登录</a></h4>
 	</div>
 	<div id="top_text" style="margin-top:30px;color:white;margin-left:1000px;">
-		管理员您好,今天是<%=dateString %>
+		<%=loginOpt.getUser_name()%>&nbsp;&nbsp;您好,今天是<%=dateString %>
 	</div>
 </div>

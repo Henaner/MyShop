@@ -17,6 +17,7 @@
 	</div>
 	<div class="div_login">
 		<form action="<%=request.getContextPath() %>/lockPages/check/doLogin.jsp" method="post" onsubmit="return login_check();">
+			<div style="color:red;margin-left:130px;"><%=LoginCheckUtil.showMsg(request,"status") %></div>
 			<table>
 				<tr>
 					<td>用户名&nbsp;&nbsp;&nbsp;&nbsp;</td>

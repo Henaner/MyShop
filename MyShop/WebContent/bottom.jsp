@@ -5,8 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/top.css">
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/top.js"></script>
 <title>Copyright</title>
 </head>
 <body>
@@ -18,12 +16,6 @@
 				<table>
 					<tr>
 						<th>购物保障</th>
-					</tr>
-					<tr id="tr">
-						<td><a href="">退换货流程</a></td>
-					</tr>
-					<tr id="tr">
-						<td><a href="">退换货政策</a></td>
 					</tr>
 					<tr id="tr">
 						<td><a href="">条款条约</a></td>
@@ -42,9 +34,6 @@
 					<tr id="tr">
 						<td><a href="">找回密码</a></td>
 					</tr>
-					<tr id="tr">
-						<td><a href="">帮助中心</a></td>
-					</tr>
 				</table>
 			</div>
 			<div id="line_2"></div>
@@ -52,12 +41,6 @@
 				<table>
 					<tr>
 						<th>配送方式</th>
-					</tr>
-					<tr id="tr">
-						<td><a href="">配送标准</a></td>
-					</tr>
-					<tr id="tr">
-						<td><a href="">包裹查询</a></td>
 					</tr>
 					<tr id="tr">
 						<td><a href="">送货方式</a></td>
@@ -74,10 +57,7 @@
 						<td><a href="">关于家乡味</a></td>
 					</tr>
 					<tr id="tr">
-						<td><a href="">诚聘英才</a></td>
-					</tr>
-					<tr id="tr">
-						<td><a href="<%=request.getContextPath()%>/lockPages/admin/admin.jsp">后台管理</a></td>
+						<td><a href="<%=request.getContextPath()%>/lockPages/admin/adminIndex.jsp">后台管理</a></td>
 					</tr>
 				</table>
 			</div>
@@ -114,7 +94,7 @@
 			<div id="statemet_text">Copyright © 2008-2016 家乡味-王晨辉 版权所有  <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">豫ICP备15028016号-1</a> 增值电信业务经营许可证:豫ICP备15028016号</div>
 			<div id="statement_img" align="center"><a href="http://t.knet.cn/index_new.jsp"><img style="width:160px;height:90px;" src="<%=request.getContextPath() %>/images/icon/trusted.jpg"></a>&nbsp;&nbsp;<a href="http://www.szfw.org/"><img id="honest_img" style="width:160px;height:72px;" src="<%=request.getContextPath() %>/images/icon/honest.png"></a></div>
 		</div>
-		<div id="qrcode_big" style="height:145px;width:145px;border:solid 1px red; display:none;margin-left:670px;margin-top:-265px;"><img style="height:145px;width:145px;" alt="加入我们有更多的优惠哦" title="加入我们有更多的优惠哦" src="<%=request.getContextPath() %>/images/icon/qr.png"></div>
+		<div id="qrcode_big" style="height:145px;width:145px;border:solid 1px red; display:none;margin-left:670px;margin-top:-280px;"><img style="height:145px;width:145px;" alt="加入我们有更多的优惠哦" title="加入我们有更多的优惠哦" src="<%=request.getContextPath() %>/images/icon/qr.png"></div>
 	</div>
 	<!-- 控制鼠标放到二维码上的放大效果 -->
 	<script type="text/javascript">

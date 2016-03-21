@@ -4,21 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/js/icheck/skins/all.css" >
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/icheck/icheck.js"></script>
-<title>Insert title here</title>
+<title>会员中心</title>
+<link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico">
 </head>
-<body>
-<input type="radio" name="iCheck" id="item" class="item">
-</body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		 $('input').iCheck({
-		   checkboxClass: 'icheckbox_square-red',  // 注意square和blue的对应关系
-		   radioClass: 'iradio_square-red',
-		   increaseArea: '20%' // optional
-		 });
-	});
-</script>
+<frameset style="height:800px;" rows="10%,90%">
+	<frame src="<%=request.getContextPath()%>/lockPages/user/profileTop.jsp" scrolling="no" frameborder="0">
+	<frameset cols="15%,*">
+		<frame id="left" src="<%=request.getContextPath()%>/lockPages/user/profileLeft.jsp" scrolling="no" frameborder="0">
+		<frame id="main" src="<%=request.getContextPath()%>/lockPages/user/profileIndex.jsp" name="main" scrolling="no" frameborder="0">
+	</frameset>
+</frameset>
 </html>

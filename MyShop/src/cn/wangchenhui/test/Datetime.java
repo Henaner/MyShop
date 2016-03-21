@@ -10,5 +10,10 @@ public class Datetime {
 		Date date = new Date();
 		System.out.println(sdf.format(date));
 		System.out.println(sdf.format(date).length());
+		StringBuffer buffer = new StringBuffer();
+		for(int i=1;i<=6;i++){
+			buffer.append(i+",");
+		}
+		System.out.println(buffer);
 	}
 }

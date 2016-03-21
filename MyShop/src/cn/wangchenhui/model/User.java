@@ -45,7 +45,7 @@ public class User {
 	public void setUser_gender(String user_gender) {
 		this.user_gender = user_gender;
 	}
-	public String getBirthday() {
+	public String getBirthday(){
 		return birthday;
 	}
 	public void setBirthday(String birthday) {
@@ -54,7 +54,7 @@ public class User {
 	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(String address){
 		this.address = address;
 	}
 	public String getTelphone() {

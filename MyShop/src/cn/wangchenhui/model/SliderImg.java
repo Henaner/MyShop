@@ -8,13 +8,12 @@ import java.util.Date;
  * @version 1.0 
  */
 public class SliderImg {
-	private String img_id;
+	private int img_id;
 	private String img_title;
 	private String img_type;
 	private String goods_id;
 	private String img_path;
-	private Date post_date;
-	private int display_count;
+	private String post_date;
 	private int user_id;
 	public void setUser_id(int user_id){
 		this.user_id = user_id;
@@ -28,10 +27,10 @@ public class SliderImg {
 	public String getGoods_id(){
 		return goods_id;
 	}
-	public String getImg_id() {
+	public int getImg_id() {
 		return img_id;
 	}
-	public void setImg_id(String img_id) {
+	public void setImg_id(int img_id) {
 		this.img_id = img_id;
 	}
 	public String getImg_title() {
@@ -52,16 +51,10 @@ public class SliderImg {
 	public void setImg_path(String img_path) {
 		this.img_path = img_path;
 	}
-	public Date getPost_date() {
+	public String getPost_date() {
 		return post_date;
 	}
-	public void setPost_date(Date post_date) {
+	public void setPost_date(String post_date) {
 		this.post_date = post_date;
-	}
-	public int getDisplay_count() {
-		return display_count;
-	}
-	public void setDisplay_count(int display_count) {
-		this.display_count = display_count;
 	}
 }

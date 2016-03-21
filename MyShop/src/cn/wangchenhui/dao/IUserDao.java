@@ -9,6 +9,7 @@ public interface IUserDao {
 	void delete(int user_id);
 	User login(String user_name,String user_pass);
 	User load(int user_id);
-	Pager<User> list();
+	Pager<User> list(String condition);
+	Pager<User> optList(String condition);
 	User login(String username);
 }

@@ -11,8 +11,6 @@
 	a:visited{ /*访问过的链接颜色*/
 		color:grey; 
 	}
-	input{height:22px;}
-	td {padding:8px 0px;}
 /*版权页面*/
 	#line_1{height:150px;width:1px; border-left:1px #000 solid;margin-top:-100px; margin-left:180px;}
 	#line_2{height:150px;width:1px; border-left:1px #000 solid;margin-top:-150px;margin-left:350px;}

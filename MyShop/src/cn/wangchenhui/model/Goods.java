@@ -9,25 +9,51 @@ import java.util.Date;
  */
 public class Goods {
 	private String goods_id;
-	private String goods_name;
+	private String goods_title;
+	private String goods_desc;
+	private String img_name;
+	public String getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(String img_name) {
+		this.img_name = img_name;
+	}
+	private float price;
 	private int stock;
-	private String orgin_place;
-	private int operator_id;
-	private Date bracket_time;
-	private int img_id;
-	private int desc_id;
-	private int comment_id;
+	private String post_date;
+	private String goods_type;
+	private int curr_stock;
+	private int user_id;
+	private String goods_status;
+	public String getGoods_status() {
+		return goods_status;
+	}
+	public void setGoods_status(String goods_status) {
+		this.goods_status = goods_status;
+	}
 	public String getGoods_id() {
 		return goods_id;
 	}
 	public void setGoods_id(String goods_id) {
 		this.goods_id = goods_id;
 	}
-	public String getGoods_name() {
-		return goods_name;
+	public String getGoods_title() {
+		return goods_title;
 	}
-	public void setGoods_name(String goods_name) {
-		this.goods_name = goods_name;
+	public void setGoods_title(String goods_title) {
+		this.goods_title = goods_title;
+	}
+	public String getGoods_desc() {
+		return goods_desc;
+	}
+	public void setGoods_desc(String goods_desc) {
+		this.goods_desc = goods_desc;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	public int getStock() {
 		return stock;
@@ -35,41 +61,29 @@ public class Goods {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public String getOrgin_place() {
-		return orgin_place;
+	public String getPost_date() {
+		return post_date;
 	}
-	public void setOrgin_place(String orgin_place) {
-		this.orgin_place = orgin_place;
+	public void setPost_date(String post_date) {
+		this.post_date = post_date;
 	}
-	public int getOperator_id() {
-		return operator_id;
+	public String getGoods_type() {
+		return goods_type;
 	}
-	public void setOperator_id(int operator_id) {
-		this.operator_id = operator_id;
+	public void setGoods_type(String goods_type) {
+		this.goods_type = goods_type;
 	}
-	public Date getBracket_time() {
-		return bracket_time;
+	public int getCurr_stock() {
+		return curr_stock;
 	}
-	public void setBracket_time(Date bracket_time) {
-		this.bracket_time = bracket_time;
+	public void setCurr_stock(int curr_stock) {
+		this.curr_stock = curr_stock;
 	}
-	public int getImg_id() {
-		return img_id;
+	public int getUser_id() {
+		return user_id;
 	}
-	public void setImg_id(int img_id) {
-		this.img_id = img_id;
-	}
-	public int getDesc_id() {
-		return desc_id;
-	}
-	public void setDesc_id(int desc_id) {
-		this.desc_id = desc_id;
-	}
-	public int getComment_id() {
-		return comment_id;
-	}
-	public void setComment_id(int comment_id) {
-		this.comment_id = comment_id;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	
 }

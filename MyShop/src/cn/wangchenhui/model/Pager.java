@@ -47,7 +47,7 @@ public class Pager<E> {
 	public List<E> getData() {
 		return data;
 	}
-	public void setData(List<E> data) {
+	public void setData(List data) {
 		this.data = data;
 	}
 }

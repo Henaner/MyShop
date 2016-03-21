@@ -12,19 +12,24 @@
 </head>
 <body>
 <%
+	String condition = request.getParameter("condition");
+	if(condition == null){
+		condition = "";
+	}
 	IUserDao userDao = DaoFactory.getUserDao();
-	Pager<User> pages = userDao.list();
-	int totalPage = pages.getPageSize();
+	Pager<User> pages = userDao.list(condition);
+	int totalPage = pages.getTotalPage();
 	int totalRecord = pages.getTotalRecord();
+	User loginUser = (User)session.getAttribute("loginUser");
 %>
 	<jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 	<div align="center" style="position:absolute;width:98%;height:450px;border:solid 1px #7F0101;margin-left:2px;margin-top:50px;">
 		<table align="center">
 			<tr>
-				<td colspan="3">请输入用户名或者联系方式(邮箱|手机号)进行查找：</td>
+				<td colspan="3">请输入用户名进行查找：</td>
 				<td colspan="9" align="left" valign="top">
 					<form action="" method="post">
-						<input type="text" name="condition" size="80">&nbsp;&nbsp;<input type="submit" style="width:60px;height:25px;background: #9D2A29;color:white;border-radius:5px;cursor:pointer;" value="查找">
+						<input type="text" value="<%=condition %>" name="condition" size="80">&nbsp;&nbsp;<input type="submit" style="width:60px;height:25px;background: #9D2A29;color:white;border-radius:5px;cursor:pointer;" value="查找">
 					</form>
 				</td>
 			</tr>
@@ -37,8 +42,8 @@
 				<td>类型</td>
 				<td>状态</td>
 				<td>操作员状态</td>
-				<td>是否是操作员</td>
-				<td>是否是管理员</td>
+				<td>是否操作员</td>
+				<td>是否管理员</td>
 			</tr>
 			<%
 				for(User user:pages.getData()){
@@ -46,7 +51,7 @@
 			<tr id="table_content" align="center">
 				<td><%=user.getUser_name() %></td>
 				<td><%=user.getUser_gender() %></td>
-				<td><%=user.getBirthday() %></td>
+				<td><%=user.getBirthday()%></td>
 				<td><%=user.getEmail() %></td>
 				<td><%=user.getTelphone() %></td>
 				<%
@@ -61,17 +66,41 @@
 					}
 				%>
 				<%
-					if(Integer.parseInt(user.getStatus())==1){
+				if(loginUser.getIs_admin().equals("Y")){
+					if(loginUser.getStatus().equals("1")){
 				%>
-				<td><a title= "单击更改为禁用" href="<%=request.getContextPath()%>/lockPages/user/disable.jsp?id=<%=user.getUser_id()%>">启用</a></td>
+					<td><a title= "单击更改为禁用" href="<%=request.getContextPath()%>/lockPages/user/disable.jsp?id=<%=user.getUser_id()%>">启用</a></td>
+					<%
+						}else{
+					%>
+					<td><a title= "单击更改为启用" href="<%=request.getContextPath()%>/lockPages/user/enable.jsp?id=<%=user.getUser_id()%>">禁用</a></td>
 				<%
+						}
 					}else{
 				%>
-				<td><a title= "单击更改为启用" href="<%=request.getContextPath()%>/lockPages/user/enable.jsp?id=<%=user.getUser_id()%>">禁用</a></td>
+					<%
+						if(loginUser.getStatus().equals("1")){
+					%>
+					<td>禁用</td>
+					<%
+						}else{
+					%>
+					<td>启用</td>
 				<%
+						}
 					}
 				%>
-				<td><%=user.getOpt_status() %></td>
+			<%
+				if(user.getOpt_status().equals("1")){
+			%>
+			<td>禁用</td>
+			<%
+				}else{
+			%>
+			<td>启用</td>
+			<%
+				}
+			%>
 				<td><%=user.getIs_operator() %></td>
 				<td><%=user.getIs_admin() %></td>
 			</tr>

@@ -1,20 +1,20 @@
 package cn.wangchenhui.util;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class DateFormat {
 	public static final String format="yyyy-MM-dd";
-	public static final SimpleDateFormat sdf = new SimpleDateFormat(format);
+	public static final String longFormat = "yyyy-MM-dd HH:mm:ss";
+	public static  SimpleDateFormat sdf = null;
 	public static String formatDate(Date date){
+		sdf = new SimpleDateFormat(format);
 		return sdf.format(date);
 	} 
 	
-	public static Date parseDate(String str) throws ParseException{
-		return sdf.parse(str);
+	public static String formatLong(Date date){
+		sdf = new SimpleDateFormat(longFormat);
+		return sdf.format(date);
 	}
 	
-	public static void main(String[] args) throws ParseException {
-		System.out.println(parseDate("1992-06-22"));
-	}
+	
 }

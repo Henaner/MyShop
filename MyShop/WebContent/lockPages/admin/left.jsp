@@ -1,3 +1,4 @@
+<%@page import="cn.wangchenhui.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,41 +26,41 @@
 		<div style="cursor:pointer;" id="left_div_order" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>用户订单管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_order_panel" class="left_div_panel" align="center">
 				<br>
-				<a href="#">用户订单管理</a><br>
-				<a href="#">用户订单管理</a><br>
-				<a href="#">用户订单管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/user/ordManage.jsp" target="main">用户订单管理</a><br>
 		</div>
 		<!-- 商品管理 -->
 		<div style="cursor:pointer;" id="left_div_goods" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商品管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_goods_panel" class="left_div_panel"  align="center">
 				<br>
-				<a href="#">商品管理</a><br>
-				<a href="#">商品管理</a><br>
-				<a href="#">商品管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/goods/gooodsManage.jsp" target="main">商品管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/goods/gooodsAdd.jsp" target="main">商品新增</a><br>
 		</div>
 		<!-- 公告管理 -->
 		<div style="cursor:pointer;" id="left_div_notice" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商城公告管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_notice_panel" class="left_div_panel" align="center">
 				<br>
-				<a href="#">商城公告管理</a><br>
-				<a href="#">商城公告管理</a><br>
-				<a href="#">商城公告管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/admin/noticeList.jsp" target="main">商城公告管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/admin/addNotice.jsp" target="main">添加商城公告</a><br>
 		</div>
+		<%
+			User loginOpt = (User)session.getAttribute("loginOpt");
+			if(loginOpt.getIs_admin().equals("N")){}else{
+		%>
 		<!-- 操作员管理 -->
 		<div style="cursor:pointer;" id="left_div_opt" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>操作员管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_opt_panel" class="left_div_panel"  align="center">
 				<br>
-				<a href="#">操作员管理</a><br>
-				<a href="#">操作员管理</a><br>
-				<a href="#">操作员管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/admin/optList.jsp" target="main">操作员管理</a><br>
+				
 		</div>
+		<%
+			}
+		%>
 		<!-- 评价管理 -->
 		<div style="cursor:pointer;" id="left_div_evaluate" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>用户评价管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div  id="left_div_evaluate_panel" class="left_div_panel" align="center">
 				<br>
-				<a href="#">用户评价管理</a><br>
-				<a href="#">用户评价管理</a><br>
-				<a href="#">用户评价管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/admin/commentManage.jsp" target="main">用户评价管理</a><br>
 		</div>
 			</div>
 </body>

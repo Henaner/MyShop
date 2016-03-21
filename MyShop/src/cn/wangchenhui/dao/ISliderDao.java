@@ -1,5 +1,7 @@
 package cn.wangchenhui.dao;
 
+import java.util.List;
+
 import cn.wangchenhui.model.SliderImg;
 
 /** 
@@ -9,4 +11,5 @@ import cn.wangchenhui.model.SliderImg;
  */
 public interface ISliderDao {
 	void addSliderImg(SliderImg img);
+	List<SliderImg> getSliderImg();
 }

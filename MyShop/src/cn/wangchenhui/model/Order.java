@@ -8,18 +8,30 @@ import java.util.Date;
  * @version 1.0 
  */
 public class Order {
-	private String order_id;
+	private int id;
+	private String ord_id;
 	private int user_id;
-	private int goods_id;
-	private float price;
+	private String goods_id;
+	private String ord_status;
+	private String post_date; //0--未发货 1--待收货 2--已经完成 3--已经评价
 	private int count;
-	private double amount;
-	private Date post_date;
-	public String getOrder_id() {
-		return order_id;
+	public int getCount() {
+		return count;
 	}
-	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getOrd_id() {
+		return ord_id;
+	}
+	public void setOrd_id(String ord_id) {
+		this.ord_id = ord_id;
 	}
 	public int getUser_id() {
 		return user_id;
@@ -27,35 +39,22 @@ public class Order {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getGoods_id() {
+	public String getGoods_id() {
 		return goods_id;
 	}
-	public void setGoods_id(int goods_id) {
+	public void setGoods_id(String goods_id) {
 		this.goods_id = goods_id;
 	}
-	public float getPrice() {
-		return price;
+	public String getOrd_status() {
+		return ord_status;
 	}
-	public void setPrice(float price) {
-		this.price = price;
+	public void setOrd_status(String ord_status) {
+		this.ord_status = ord_status;
 	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-	public Date getPost_date() {
+	public String getPost_date() {
 		return post_date;
 	}
-	public void setPost_date(Date post_date) {
+	public void setPost_date(String post_date) {
 		this.post_date = post_date;
 	}
-	
 }

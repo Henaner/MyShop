@@ -8,19 +8,24 @@ import java.util.Date;
  * @version 1.0 
  */
 public class Comment {
-	private int comment_id;
+	private int id;
 	private int user_id;
-	private String goods_id;
-	private String order_id;
-	private Date post_date;
-	private String is_ok;
-	private String content ;
-	public int getComment_id() {
-		return comment_id;
-		
+	private String ord_id;
+	private String eval_rank;
+	private String advice;
+	private String post_date;
+	private String reply;
+	public String getReply() {
+		return reply;
 	}
-	public void setComment_id(int comment_id) {
-		this.comment_id = comment_id;
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getUser_id() {
 		return user_id;
@@ -28,34 +33,28 @@ public class Comment {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public String getGoods_id() {
-		return goods_id;
+	public String getOrd_id() {
+		return ord_id;
 	}
-	public void setGoods_id(String goods_id) {
-		this.goods_id = goods_id;
+	public void setOrd_id(String ord_id) {
+		this.ord_id = ord_id;
 	}
-	public String getOrder_id() {
-		return order_id;
+	public String getEval_rank() {
+		return eval_rank;
 	}
-	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
+	public void setEval_rank(String eval_rank) {
+		this.eval_rank = eval_rank;
 	}
-	public Date getPost_date() {
+	public String getAdvice() {
+		return advice;
+	}
+	public void setAdvice(String advice) {
+		this.advice = advice;
+	}
+	public String getPost_date() {
 		return post_date;
 	}
-	public void setPost_date(Date post_date) {
+	public void setPost_date(String post_date) {
 		this.post_date = post_date;
-	}
-	public String getIs_ok() {
-		return is_ok;
-	}
-	public void setIs_ok(String is_ok) {
-		this.is_ok = is_ok;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
 	}
 }

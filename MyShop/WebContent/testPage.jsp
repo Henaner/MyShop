@@ -1,8 +1,3 @@
-<%@page import="java.util.List"%>
-<%@page import="cn.wangchenhui.model.Pager"%>
-<%@page import="cn.wangchenhui.model.User"%>
-<%@page import="cn.wangchenhui.dao.DaoFactory"%>
-<%@page import="cn.wangchenhui.dao.IUserDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,60 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	<%
-		IUserDao userDao = DaoFactory.getUserDao();
-		Pager<User> pages = userDao.list();
-		List<User> list = pages.getData();
-		int totalPage = pages.getTotalPage();
-		int totalRecord = pages.getTotalRecord();
-	%>
-	<table width="90%" align="center" border="1">
-		<tr>
-			<td>id</td>
-			<td>用户名</td>
-			<td>密码</td>
-			<td>性别</td>
-			<td>生日</td>
-			<td>地址</td>
-			<td>邮箱</td>
-			<td>电话</td>
-			<td>类型</td>
-			<td>状态</td>
-			<td>操作员状态</td>
-			<td>是否是操作员</td>
-			<td>是否是管理员</td>
-		</tr>
-		<%
-			for(User user:list){
-		%>
-		<tr>
-			<td><%=user.getUser_id() %></td>
-			<td><%=user.getUser_name() %></td>
-			<td><%=user.getUser_pass() %></td>
-			<td><%=user.getUser_gender() %></td>
-			<td><%=user.getBirthday() %></td>
-			<td><%=user.getAddress() %></td>
-			<td><%=user.getEmail() %></td>
-			<td><%=user.getTelphone() %></td>
-			<td><%=user.getType() %></td>
-			<td><%=user.getStatus() %></td>
-			<td><%=user.getOpt_status() %></td>
-			<td><%=user.getIs_operator() %></td>
-			<td><%=user.getIs_admin() %></td>
-		</tr>
-		<%
-			}
-		%>
-		<tr>
-			<td colspan="13">
-				<jsp:include page="/lockPages/pager/pager.jsp">
-					<jsp:param value="<%=totalPage %>" name="totalPage"></jsp:param>
-					<jsp:param value="<%=totalRecord %>" name="totalRecord"></jsp:param>
-				</jsp:include>
-			</td>
-		</tr>
-	</table>
+	<div id="buy_number">
+		<div  id="minus" align="center"  style=" color:white;background:#9D2A29;margin-left:2px;cursor:pointer;height:28px;width:28px;border:solid 1px #9D2A29;border-right-style: none;border-top-left-radius:5px;border-bottom-left-radius:5px;">-</div>
+		<div style="top:10px;margin-left:31px;margin-top:-30px;"><input  type="text" size="3" maxlength="3" id="num_wanted" name="num_wanted" style="border:solid 1px #9D2A29;text-align:center;height:26px;" value="1"></div>
+		<div id="plus" align="center"  style="color:white;background:#9D2A29;margin-left:70px;margin-top:-30px;cursor:pointer; border:solid 1px #9D2A29;height:28px;width:28px;border-left-style: none;border-top-right-radius:5px;border-bottom-right-radius:5px;">+</div>
+	</div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(e){
+		$("#minus").click(function(){
+			if(($("#num_wanted").val()==1)){
+				alert("数量至少为1");
+			}else{
+				$("#num_wanted").val(($("#num_wanted").val()-0)-1);
+			}
+		});
+		$("#plus").click(function(){
+			if(($("#num_wanted").val()==999)){
+				alert("数量至多为999");
+			}else{
+				$("#num_wanted").val(($("#num_wanted").val()-0)+1);
+			}
+		});
+	});
+</script>
 </html>

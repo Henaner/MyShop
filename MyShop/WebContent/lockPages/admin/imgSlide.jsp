@@ -1,3 +1,4 @@
+<%@page import="cn.wangchenhui.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,41 +9,34 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-2.2.0.min.js"></script>
 </head>
 <body>
+<%
+	User loginUser = (User)session.getAttribute("loginUser");
+%>
 <jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 <br><br>
-	<form action="#到时候这个里面用其他的来上传" method="post">
+	<form action="<%=request.getContextPath() %>/FileUpload" method="post" enctype="multipart/form-data">
 		<div align="center" style="width:90%;height:450px;border:solid 1px #7F0101;margin-left:60px;margin-top:10px;">
 		<div><img src="<%=request.getContextPath()%>/images/banner.jpg" style="width:100%;height:50px;"><p style="color:red;margin-top:-30px;">注意图片的尺寸是1920*600的格式</p></div>
 			<table align="center" style="margin-top:80px;">
 				<tr>
 					<td>图片标题&nbsp;&nbsp;</td>
-					<td><input type="text" name="img_title" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>(带有*的内容为必填项)</td>
-				</tr>
-				<!--这个功能等以后自己有时间再去实现
-				<tr>
-					<td>轮播数量&nbsp;&nbsp;</td>
-					<td>
-						<select name="slide_count" style="width:275px;height:28px;border-radius:5px;border:solid 1px #CCCCCC;">
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select><font color="red">*</font>默认展示3张
+					<td><input type="text" name="img_title" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>(带有*的内容为必填项)
+						 <input type="hidden" name="user_id" value="<%=loginUser.getUser_id()%>"><!-- 这里要传用户id -->
 					</td>
 				</tr>
-				-->
 				<tr>
 					<td>上传图片&nbsp;&nbsp;</td>
 					<td>
 						<div class="uploader green">
 							<input type="text" class="filename" readonly="readonly"/>
-							<input type="button" name="file" class="button" value="请选择图片..."/>
-							<input type="file" size="30"/>
+							<input type="button" class="button" value="请选择图片..."/>
+							<input type="file" name="image" size="30" />
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>绑定商品&nbsp;&nbsp;</td>
-					<td><input type="text" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>绑定上架商品的id</td>
+					<td><input type="text" name="bind_goods" size="42" style="border:solid 1px #CCCCCC;height:28px;border-radius:5px;text-indent:2px;padding-left: 2px;"><font color="red">*</font>绑定上架商品的id</td>
 				</tr>
 				<tr height="200px;">
 					<td colspan="2" align="center">
