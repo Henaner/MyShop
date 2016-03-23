@@ -35,8 +35,8 @@ public class OrderDao implements IOrderDao {
 			pstat.setInt(2, order.getUser_id());
 			pstat.setString(3, order.getGoods_id());
 			pstat.setString(4, order.getPost_date());
-			pstat.setString(5,"0");
-			pstat.setInt(6,order.getCount());
+			pstat.setString(5,"0"); //0代表未发货的状态
+			pstat.setFloat(6,order.getAmount());
 			pstat.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,12 +74,17 @@ public class OrderDao implements IOrderDao {
 		// TODO Auto-generated method stub
 		Connection conn  = null;
 		PreparedStatement pstat = null;
-		String sql = "update user_ord set ord_status = ? where ord_id =?";
+		String sql = "update user_ord set id=?,ord_id=?,user_id=?,goods_id=?,post_date=?, ord_status = ? ,amount = ? where ord_id =?";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1,order.getOrd_status());
-			pstat.setString(2, order.getOrd_id());
+			pstat.setInt(1, order.getId());
+			pstat.setString(2,order.getOrd_id());
+			pstat.setInt(3, order.getUser_id());
+			pstat.setString(4, order.getGoods_id());
+			pstat.setString(5, order.getPost_date());
+			pstat.setString(6, order.getOrd_status());
+			pstat.setFloat(7, order.getAmount());
 			pstat.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -111,7 +116,7 @@ public class OrderDao implements IOrderDao {
 				order.setUser_id(rs.getInt("user_id"));
 				order.setPost_date(rs.getString("post_date"));
 				order.setOrd_status(rs.getString("ord_status"));
-				order.setCount(rs.getInt("count"));
+				order.setAmount(rs.getFloat("amount"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -146,7 +151,7 @@ public class OrderDao implements IOrderDao {
 				order.setUser_id(rs.getInt("user_id"));
 				order.setPost_date(rs.getString("post_date"));
 				order.setOrd_status(rs.getString("ord_status"));
-				order.setCount(rs.getInt("count"));
+				order.setAmount(rs.getFloat("amount"));
 				list.add(order);
 			}
 		} catch (SQLException e) {
@@ -190,7 +195,7 @@ public class OrderDao implements IOrderDao {
 				order.setOrd_status(rs.getString("ord_status"));
 				order.setPost_date(rs.getString("post_date"));
 				order.setUser_id(rs.getInt("user_id"));
-				order.setCount(rs.getInt("count"));
+				order.setAmount(rs.getFloat("amount"));
 				list.add(order);
 			}
 			/*计数*/
@@ -247,7 +252,7 @@ public class OrderDao implements IOrderDao {
 				order.setOrd_status(rs.getString("ord_status"));
 				order.setPost_date(rs.getString("post_date"));
 				order.setUser_id(rs.getInt("user_id"));
-				order.setCount(rs.getInt("count"));
+				order.setAmount(rs.getFloat("amount"));
 				list.add(order);
 			}
 			/*计数*/
@@ -296,7 +301,7 @@ public class OrderDao implements IOrderDao {
 				order.setUser_id(rs.getInt("user_id"));
 				order.setPost_date(rs.getString("post_date"));
 				order.setOrd_status(rs.getString("ord_status"));
-				order.setCount(rs.getInt("count"));
+				order.setAmount(rs.getFloat("amount"));
 				list.add(order);
 			}
 		} catch (SQLException e) {
@@ -329,7 +334,7 @@ public class OrderDao implements IOrderDao {
 				order.setUser_id(rs.getInt("user_id"));
 				order.setPost_date(rs.getString("post_date"));
 				order.setOrd_status(rs.getString("ord_status"));
-				order.setCount(rs.getInt("count"));
+				order.setAmount(rs.getFloat("amount"));
 				list.add(order);
 			}
 		} catch (SQLException e) {

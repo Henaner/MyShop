@@ -54,15 +54,15 @@
 					</tr>
 					<tr>
 						<td>库存</td>
-						<td><%=goods.getStock() %></td>
+						<td><%=goods.getCurr_stock()%></td>
 					</tr>
 					<tr>
 						<td>需求量</td>
 						<td>
 							<div id="buy_number">
-								<div  id="minus" align="center"  style=" color:white;background:#9D2A29;margin-left:2px;cursor:pointer;height:28px;width:28px;border:solid 1px #9D2A29;border-right-style: none;border-top-left-radius:5px;border-bottom-left-radius:5px;">-</div>
+								<div  id="minus" align="center"  style="vertical-align:center; color:white;background:#9D2A29;margin-left:2px;cursor:pointer;height:28px;width:28px;border:solid 1px #9D2A29;border-right-style: none;border-top-left-radius:5px;border-bottom-left-radius:5px;">-</div>
 								<div style="top:10px;margin-left:31px;margin-top:-30px;"><input  type="text" size="3" maxlength="3" id="num_wanted" name="num_wanted" style="border:solid 1px #9D2A29;text-align:center;height:26px;" value="1"></div>
-								<div id="plus" align="center"  style="color:white;background:#9D2A29;margin-left:70px;margin-top:-30px;cursor:pointer; border:solid 1px #9D2A29;height:28px;width:28px;border-left-style: none;border-top-right-radius:5px;border-bottom-right-radius:5px;">+</div>
+								<div id="plus" align="center"  style="vertical-align:center;color:white;background:#9D2A29;margin-left:70px;margin-top:-30px;cursor:pointer; border:solid 1px #9D2A29;height:28px;width:28px;border-left-style: none;border-top-right-radius:5px;border-bottom-right-radius:5px;">+</div>
 							</div>
 						</td>
 					</tr>

@@ -36,6 +36,24 @@
     <filter-name>CharEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <filter>
+  	<filter-name>LoginFilter</filter-name>
+  	<filter-class>cn.wangchenhui.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<url-pattern>/lockPages/user/*</url-pattern>
+  </filter-mapping>
+  <!-- 
+  <filter>
+  	<filter-name>OperatorFilter</filter-name>
+  	<filter-class>cn.wangchenhui.filter.OperatorFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>OperatorFilter</filter-name>
+  	<url-pattern>/lockPages/admin/*</url-pattern>
+  </filter-mapping>
+   -->
   <!-- 控制轮播的servlet -->
   <servlet>
     <servlet-name>FileUpload</servlet-name>

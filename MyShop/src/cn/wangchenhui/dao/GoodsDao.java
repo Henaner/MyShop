@@ -147,7 +147,7 @@ public class GoodsDao implements IGoodsDao{
 		ResultSet rs = null;
 		Goods goods = null;
 		List<Goods> list = new ArrayList<Goods>();
-		String sql = "select * from goods where goods_type =? order by str_to_date(post_date, '%Y-%m-%d %k:%i:%s') desc limit 0,6";
+		String sql = "select * from goods where goods_type =? and goods_status='在架' order by str_to_date(post_date, '%Y-%m-%d %k:%i:%s') desc limit 0,6";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
@@ -198,8 +198,8 @@ public class GoodsDao implements IGoodsDao{
             String sql = "select * from goods";
             String sqlCount = "select count(*) from goods";
             if(condition != null || !"".equals(condition.trim())){
-                sql+=" where goods_title like'%"+condition+"%'";
-                sqlCount+=" where goods_title  like'%"+condition+"%'";
+                sql+=" where goods_id like'%"+condition+"%'";
+                sqlCount+=" where goods_id  like'%"+condition+"%'";
             }
             sql += " limit ?,?";
             pstat = conn.prepareStatement(sql);
@@ -268,8 +268,73 @@ public class GoodsDao implements IGoodsDao{
             String sql = "select * from goods";
             String sqlCount = "select count(*) from goods";
             if(condition != null || !"".equals(condition.trim())){
-                sql+=" where goods_type='"+condition+"'";
-                sqlCount+=" where where goods_type='"+condition+"'";
+                sql+=" where goods_type='"+condition+"' and goods_status='在架'";
+                sqlCount+=" where goods_type='"+condition+"' and goods_status='在架'";
+            }
+            sql += " limit ?,?";
+            pstat = conn.prepareStatement(sql);
+            pstat.setInt(1,start);
+            pstat.setInt(2,pageSize);
+
+            rs = pstat.executeQuery();
+            while(rs.next()){
+            	goods = new Goods();
+            	goods.setGoods_id(rs.getString("goods_id"));
+				goods.setGoods_title(rs.getString("goods_title"));
+				goods.setImg_name(rs.getString("img_name"));
+				goods.setGoods_desc(rs.getString("goods_desc"));
+				goods.setPrice(rs.getFloat("price"));
+				goods.setStock(rs.getInt("stock"));
+				goods.setPost_date(rs.getString("post_date"));
+				goods.setGoods_type(rs.getString("goods_type"));
+				goods.setUser_id(rs.getInt("user_id"));
+				goods.setCurr_stock(rs.getInt("curr_stock"));
+				goods.setGoods_status(rs.getString("goods_status"));
+                list.add(goods);
+            }
+            /*计数*/
+            pstat = conn.prepareStatement(sqlCount);
+            rs = pstat.executeQuery();
+            int totalRecord = 0;
+            while(rs.next()){
+                totalRecord = rs.getInt(1);
+            }
+            int totalPage = (totalRecord-1)/pageSize+1;
+            pages.setPageOffset(pageOffset);
+            pages.setPageSize(pageSize);
+            pages.setTotalRecord(totalRecord);
+            pages.setTotalPage(totalPage);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBConnection.close(conn);
+            DBConnection.close(pstat);
+            DBConnection.close(rs);
+        }
+        pages.setData(list);
+        return pages;
+	}
+
+	@Override
+	public Pager<Goods> getList(String condition) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement pstat = null;
+        Goods goods = null;
+        Pager<Goods> pages = new Pager<Goods>();
+        int pageOffset = SystemContext.getPageOffset();
+        int pageSize = SystemContext.getPageSize();
+        List<Goods> list = new ArrayList<Goods>();
+        try{
+
+            int start = pageOffset;
+            conn = DBConnection.getConnection();
+            String sql = "select * from goods";
+            String sqlCount = "select count(*) from goods";
+            if(condition != null || !"".equals(condition.trim())){
+                sql+=" where goods_id like'%"+condition+"%' and goods_status='在架'";
+                sqlCount+=" where goods_id  like'%"+condition+"%' and goods_status='在架'";
             }
             sql += " limit ?,?";
             pstat = conn.prepareStatement(sql);

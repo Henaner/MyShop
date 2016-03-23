@@ -16,6 +16,7 @@ public interface IGoodsDao {
 	void update(Goods goods);
 	void delete(String goods_id);
 	Goods load(String goods_id);
+	Pager<Goods> getList(String condition);
 	Pager<Goods> list(String condition);
 	List<Goods> getTop6(String type);
 	Pager<Goods> hot_or_new(String condition);

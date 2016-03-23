@@ -47,6 +47,7 @@
         int minute = calendar.get(Calendar.MINUTE);
         int seconde = calendar.get(Calendar.SECOND);
         int rndNum = (int)(Math.random()*1000+1);
+        float amount = 0.00f;
         String post_date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String ord_id = String.valueOf(year)+String.valueOf(month)+String.valueOf(day)+String.valueOf(hour)+String.valueOf(minute)+String.valueOf(seconde)+String.valueOf(rndNum);
 	%>
@@ -89,11 +90,12 @@
 						<td><%=cart.getAmount() %>￥</td>
 					</tr>
 					<%
+					 amount += cart.getAmount();
 						}
 					%>
 				</table>
 			</div>
-			<div style="margin-left:60px;position:absolute;margin-top:2px;;"><p style="font-size:18px;color:white;"><b>总金额:</b><%=cartDao.getAmout(user_id)%>￥</p></div>
+			<div style="margin-left:60px;position:absolute;margin-top:2px;;"><p style="font-size:18px;color:white;"><b>总金额:</b><%=amount%>￥</p></div>
 			<div style="margin-left:1050px;position:absolute;margin-top:2px;"><input type="button" onclick= "window.location.href='<%=request.getContextPath() %>/lockPages/goods/doOrder.jsp?user_id=<%=user_id %>&ord_id=<%=ord_id %>&amount=cart.getAmount()'" style="color:#9D2A29;cursor:pointer;height:47px;width:120px;font-size:18px;left:900px;" value="下单"></div>
 		</div>
 	</div>

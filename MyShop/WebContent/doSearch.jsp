@@ -21,8 +21,8 @@
 		condition = "";
 	}
 	session.setAttribute("condition", condition);
-	IGoodsDao userDao = DaoFactory.getGoodsDao();
-	Pager<Goods> pages = userDao.list(condition);
+	IGoodsDao goodsDao = DaoFactory.getGoodsDao();
+	Pager<Goods> pages = goodsDao.getList(condition);
 	int totalPage = pages.getTotalPage();
 	int totalRecord = pages.getTotalRecord();
 %>
@@ -45,14 +45,14 @@
 			}
 		%>		
 		</div>
-		<div align="center" style="margin:20px auto;">
+		<div align="center" style="width:90%;margin-left:60px;border:solid 1px #CCCCCC;margin-top:-150px;">
 			<jsp:include page="/lockPages/pager/pager.jsp">
 							<jsp:param name="totalRecord" value="<%=totalRecord%>"/>
 		               	    <jsp:param name="totalPage" value="<%=totalPage%>" />
 			</jsp:include>
 		</div>
 		<!-- 导入底部的版权页 -->
-		<div style="position:absolute;margin-top:1500px;margin-left:150px;">
+		<div style="position:absolute;margin-top:50px;margin-left:150px;">
 			<jsp:include page="/bottom.jsp"></jsp:include>
 		</div>
 </body>

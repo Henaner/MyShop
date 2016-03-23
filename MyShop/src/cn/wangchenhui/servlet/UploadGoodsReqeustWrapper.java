@@ -104,6 +104,9 @@ public class UploadGoodsReqeustWrapper extends HttpServletRequestWrapper{
 		String post_date = DateFormat.formatLong(new Date());
 		int curr_stock = stock;
 		String goods_type = getParameter("iCheck");
+		if(goods_type==null||"".equals(goods_type)){
+			goods_type = "";
+		}
 		String goods_status = "在架";
 		
 		goods.setUser_id(user_id);

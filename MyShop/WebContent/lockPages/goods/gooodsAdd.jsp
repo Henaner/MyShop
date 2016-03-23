@@ -17,7 +17,7 @@
 <%
 	User user = (User)session.getAttribute("loginUser");
 %>
-	<form action="<%=request.getContextPath() %>/GoodsAdd" onsubmit="checkRadion();" method="post" enctype="multipart/form-data" name="goods_add">
+	<form action="<%=request.getContextPath() %>/GoodsAdd" method="post" enctype="multipart/form-data" name="goods_add">
 		<div align="center" style="width:90%;height:450px;border:solid 1px #7F0101;margin-left:60px;margin-top:10px;">
 		<div><img src="<%=request.getContextPath()%>/images/banner.jpg" style="width:100%;height:50px;"><p style="color:red;margin-top:-30px;">注意图片的尺寸是1920*600的格式</p></div>
 			<table align="left" style="margin-top:5px;">
@@ -67,17 +67,6 @@
 		   increaseArea: '20%' // optional
 		 });
 	});
-</script>
-<script type="text/javascript">
-	function checkRadion(){
-		for(var i=0;i<document.goods_add.iCheck.length;i++)
-		{
-		  if(!document.goods_add.iCheck[i].checked)
-		  {
-		    return false;
-		  }
-		}
-	}
 </script>
 <style type="text/css">
 	.uploader{

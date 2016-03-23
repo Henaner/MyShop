@@ -14,12 +14,12 @@ public class Order {
 	private String goods_id;
 	private String ord_status;
 	private String post_date; //0--未发货 1--待收货 2--已经完成 3--已经评价
-	private int count;
-	public int getCount() {
-		return count;
+	private float amount ; // 总金额
+	public float getAmount() {
+		return amount;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setAmount(float amount) {
+		this.amount = amount;
 	}
 	public int getId() {
 		return id;

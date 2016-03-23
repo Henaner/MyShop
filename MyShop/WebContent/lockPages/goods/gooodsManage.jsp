@@ -18,7 +18,7 @@
 	}
 	IGoodsDao goodsDao = DaoFactory.getGoodsDao();
 	Pager<Goods> pages = goodsDao.list(condition);
-	int totalPage = pages.getPageSize();
+	int totalPage = pages.getTotalPage();
 	int totalRecord = pages.getTotalRecord();
 %>
 	<jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
@@ -47,7 +47,17 @@
 				<td><%=goods.getPost_date() %></td>
 				<td><%=goods.getUser_id() %></td>
 				<td><%=goods.getCurr_stock() %></td>
-				<td><%=goods.getGoods_status() %></td>
+				<%
+					if(goods.getGoods_status().equals("在架")){
+				%>
+				<td><a href="<%=request.getContextPath()%>/lockPages/goods/goodsOff.jsp?goods_id=<%=goods.getGoods_id()%>"><font color="green">下架</font></a></td>
+				<%
+					}else{
+				%>
+				<td><a href="<%=request.getContextPath()%>/lockPages/goods/goodsOn.jsp?goods_id=<%=goods.getGoods_id()%>"><font color="red">上架</font></a></td>
+				<%
+					}
+				%>
 			</tr>
 			<%
 					}

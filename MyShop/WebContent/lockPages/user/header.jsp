@@ -29,6 +29,14 @@
 	<div style="width:100%;margin-left:-8px;height:50px;margin-top:-8px;background-color:#F2F2F2;" id="header_div">
 		<div id="welcome_words">嗨！欢迎您来到家乡味商城</div>
 		<div id="index_opt" style="margin-left:1100px;">
+		<div id="catagory" style="margin-left:-700px;width:720px;margin-top:9px;">
+			<a href="<%=request.getContextPath() %>/catagory.jsp?" target="_blank"><div id="catagory_1" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">肉类精选</div></a>
+			<a href="" target="_blank"><div id="catagory_2" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">粮油米面</div></a>
+			<a href="" target="_blank"><div id="catagory_3" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">果蔬副食</div></a>
+			<a href="" target="_blank"><div id="catagory_4" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">名茶名酒</div></a>
+			<a href="" target="_blank"><div id="catagory_5" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">野生特产</div></a>
+			<a href="" target="_blank"><div id="catagory_6" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">工艺礼品</div></a>
+		</div>
 		<%
 			if(loginUser==null){
 				%>
@@ -134,6 +142,48 @@
 	        	$("#banner_cart").css("background-color","#CA0618");
 	        	$("#banner_cart p").css("color","white");
 	        	$("#banner_cart").css("border","none");
+	        });
+	        /*控制导航条的变化*/
+	        $("#catagory_1").mouseover(function(){
+	        	$("#catagory_1").css("background-color","green");
+	        });
+	        $("#catagory_1").mouseout(function(){
+	        	$("#catagory_1").css("background-color","#9D2A29");
+	        });
+	        
+	        $("#catagory_2").mouseover(function(){
+	        	$("#catagory_2").css("background-color","green");
+	        });
+	        $("#catagory_2").mouseout(function(){
+	        	$("#catagory_2").css("background-color","#9D2A29");
+	        });
+	        
+	        $("#catagory_3").mouseover(function(){
+	        	$("#catagory_3").css("background-color","green");
+	        });
+	        $("#catagory_3").mouseout(function(){
+	        	$("#catagory_3").css("background-color","#9D2A29");
+	        });
+	        
+	        $("#catagory_4").mouseover(function(){
+	        	$("#catagory_4").css("background-color","green");
+	        });
+	        $("#catagory_4").mouseout(function(){
+	        	$("#catagory_4").css("background-color","#9D2A29");
+	        });
+	        
+	        $("#catagory_5").mouseover(function(){
+	        	$("#catagory_5").css("background-color","green");
+	        });
+	        $("#catagory_5").mouseout(function(){
+	        	$("#catagory_5").css("background-color","#9D2A29");
+	        });
+	        
+	        $("#catagory_6").mouseover(function(){
+	        	$("#catagory_6").css("background-color","green");
+	        });
+	        $("#catagory_6").mouseout(function(){
+	        	$("#catagory_6").css("background-color","#9D2A29");
 	        });
 	    });
 	</script>
