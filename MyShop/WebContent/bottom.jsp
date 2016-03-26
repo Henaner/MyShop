@@ -18,7 +18,7 @@
 						<th>购物保障</th>
 					</tr>
 					<tr id="tr">
-						<td><a href="">条款条约</a></td>
+						<td><a href="<%=request.getContextPath() %>/about.jsp" target="_blank">条款条约</a></td>
 					</tr>
 				</table>
 			</div>
@@ -29,10 +29,10 @@
 						<th>新手入门</th>
 					</tr>
 					<tr id="tr">
-						<td><a href="">用户注册</a></td>
+						<td><a href="<%=request.getContextPath() %>/about.jsp" target="_blank">用户注册</a></td>
 					</tr>
 					<tr id="tr">
-						<td><a href="">找回密码</a></td>
+						<td><a href="<%=request.getContextPath() %>/about.jsp" target="_blank">找回密码</a></td>
 					</tr>
 				</table>
 			</div>
@@ -43,7 +43,7 @@
 						<th>配送方式</th>
 					</tr>
 					<tr id="tr">
-						<td><a href="">送货方式</a></td>
+						<td><a href="<%=request.getContextPath() %>/about.jsp" target="_blank">送货方式</a></td>
 					</tr>
 				</table>
 			</div>
@@ -54,10 +54,10 @@
 						<th>关于我们</th>
 					</tr>
 					<tr id="tr">
-						<td><a href="">关于家乡味</a></td>
+						<td><a href="<%=request.getContextPath() %>/about.jsp" target="_blank">关于家乡味</a></td>
 					</tr>
 					<tr id="tr">
-						<td><a href="<%=request.getContextPath()%>/lockPages/admin/adminIndex.jsp">后台管理</a></td>
+						<td><a href="<%=request.getContextPath()%>/lockPages/admin/adminIndex.jsp" target="_blank">后台管理</a></td>
 					</tr>
 				</table>
 			</div>
@@ -79,7 +79,7 @@
 			<div id="contact">
 				<table>
 					<tr>
-						<th>400-88888888</th>
+						<th>18721686821</th>
 					</tr>
 					<tr align="center" id="tr">
 						<td>工作时间7*24小时</td>

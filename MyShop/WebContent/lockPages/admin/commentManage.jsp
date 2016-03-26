@@ -14,6 +14,8 @@
 	String condition = request.getParameter("condition");
 	if(condition == null){
 		condition = "";
+	}else{
+		condition = new String(request.getParameter("condition").getBytes("iso8859-1"),"utf-8");
 	}
 	ICommentDao commentDao = DaoFactory.getCommentDao();
 	Pager<Comment> pages = commentDao.list(condition);

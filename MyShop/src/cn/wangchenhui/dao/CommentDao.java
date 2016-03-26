@@ -116,8 +116,8 @@ public class CommentDao implements ICommentDao{
 			String sql = "select * from user_comment ";
             String sqlCount = "select count(*) from user_comment";
             if(condition != null || !"".equals(condition.trim())){
-                sql+=" where ord_id like'%"+condition+"%'";
-                sqlCount+=" where ord_id  like'%"+condition+"%'";
+                sql+=" where eval_rank  like'%"+condition+"%'";
+                sqlCount+=" where eval_rank  like'%"+condition+"%'";
             }
             sql += " limit ?,?";
 			pstat = conn.prepareStatement(sql);
@@ -219,6 +219,38 @@ public class CommentDao implements ICommentDao{
 
 	@Override
 	public Comment getLoad(String ord_id) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstat = null;
+		ResultSet rs = null;
+		Comment comment = new Comment();
+		String sql = "select * from user_comment where ord_id=?";
+		conn = DBConnection.getConnection();
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, ord_id);
+			rs = pstat.executeQuery();
+			while(rs.next()){
+				comment.setId(rs.getInt("id"));
+				comment.setOrd_id(rs.getString("ord_id"));
+				comment.setUser_id(rs.getInt("user_id"));
+				comment.setEval_rank(rs.getString("eval_rank"));
+				comment.setAdvice(rs.getString("advice"));
+				comment.setPost_date(rs.getString("post_date"));
+				comment.setReply(rs.getString("reply"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+		}
+		return comment;
+	}
+
+	@Override
+	public Comment getComment(String ord_id) {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement pstat = null;

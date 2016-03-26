@@ -34,7 +34,7 @@
 		comment.setAdvice(advice);
 		comment.setPost_date(post_date);
 		commentDao.add(comment);
-		order.setOrd_status("3");
+		order.setOrd_status("4");
 		orderDao.update(order);
 	%>
 	<div style="border:solid 1px #CCCCCC;height:520px;width:97%">

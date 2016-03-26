@@ -107,6 +107,7 @@ public class UploadGoodsReqeustWrapper extends HttpServletRequestWrapper{
 		if(goods_type==null||"".equals(goods_type)){
 			goods_type = "";
 		}
+		String category = getParameter("category");
 		String goods_status = "在架";
 		
 		goods.setUser_id(user_id);
@@ -120,6 +121,7 @@ public class UploadGoodsReqeustWrapper extends HttpServletRequestWrapper{
 		goods.setStock(stock);
 		goods.setCurr_stock(curr_stock);
 		goods.setImg_name(img_name);
+		goods.setCategory(category);
 		try{
 			goodsDao.add(goods);
 		}catch(Exception e){

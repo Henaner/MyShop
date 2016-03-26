@@ -20,4 +20,5 @@ public interface IGoodsDao {
 	Pager<Goods> list(String condition);
 	List<Goods> getTop6(String type);
 	Pager<Goods> hot_or_new(String condition);
+	Pager<Goods> getCategory(String category);
 }

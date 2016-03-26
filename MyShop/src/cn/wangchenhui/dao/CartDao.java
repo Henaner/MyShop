@@ -22,6 +22,26 @@ import cn.wangchenhui.util.DBConnection;
 public class CartDao implements ICartDao{
 
 	@Override
+	public void deleteOfUser(int user_id) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstat = null;
+		String sql = "delete from cart where user_id= ?";
+		conn = DBConnection.getConnection();
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setInt(1, user_id);
+			pstat.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+		}
+	}
+
+	@Override
 	public void add(Cart cart) {
 		// TODO Auto-generated method stub
 		Connection conn = null;
@@ -52,7 +72,7 @@ public class CartDao implements ICartDao{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement pstat = null;
-		String sql = "update cart set user_id=?,goods_id=?,count=?,amount=?,post_date=?,cart_status=? where id= ?";
+		String sql = "update cart set  user_id=?,goods_id=?,count=?,amount=?,post_date=?,cart_status=? where id= ?";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
@@ -72,6 +92,74 @@ public class CartDao implements ICartDao{
 			DBConnection.close(pstat);
 		}
 		
+	}
+
+	@Override
+	public Cart load(String goods_id) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstat = null;
+		ResultSet rs = null;
+		Cart cart = null;
+		String sql = "select * from cart where goods_id =?";
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1,goods_id);
+			rs = pstat.executeQuery();
+			while(rs.next()){
+				cart = new Cart();
+				cart.setId(rs.getInt("id"));
+				cart.setUser_id(rs.getInt("user_id"));
+				cart.setGoods_id(rs.getString("goods_id"));
+				cart.setCount(rs.getInt("count"));
+				cart.setAmount(rs.getFloat("amount"));
+				cart.setPost_date(rs.getString("post_date"));
+				cart.setCart_status(rs.getString("cart_status"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+			DBConnection.close(rs);
+		}
+		return cart;
+		
+	}
+
+	@Override
+	public Cart getload(String goods_id) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstat = null;
+		ResultSet rs = null;
+		Cart cart = null;
+		String sql = "select * from cart where goods_id = ?";
+		conn = DBConnection.getConnection();
+		try {
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, goods_id);
+			rs = pstat.executeQuery();
+			while(rs.next()){
+				cart = new Cart();
+				cart.setId(rs.getInt("id"));
+				cart.setUser_id(rs.getInt("user_id"));
+				cart.setGoods_id(rs.getString("goods_id"));
+				cart.setCount(rs.getInt("count"));
+				cart.setAmount(rs.getFloat("amount"));
+				cart.setPost_date(rs.getString("post_date"));
+				cart.setCart_status(rs.getString("cart_status"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			DBConnection.close(conn);
+			DBConnection.close(pstat);
+			DBConnection.close(rs);
+		}
+		return cart;
 	}
 
 	@Override
@@ -151,14 +239,14 @@ public class CartDao implements ICartDao{
 		Connection conn = null;
 		PreparedStatement pstat = null;
 		ResultSet rs = null;
-		String sql = "select count(*) from cart where user_id= ? and cart_status='未结算'";
+		String sql = "select count(*) from cart where user_id= ? and cart_status='未结算' group by goods_id";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
 			pstat.setInt(1, user_id);
 			rs = pstat.executeQuery();
 			while(rs.next()){
-				count = rs.getInt(1);
+				count = rs.getRow();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -180,18 +268,14 @@ public class CartDao implements ICartDao{
 		List<Cart> list = new ArrayList<Cart>();
 		try {
 			conn = DBConnection.getConnection();
-			String querySql = "select * from cart where user_id = ? and cart_status = '未结算'";
+			String querySql = "select goods_id,sum(count) count from cart  where user_id = ? and cart_status = '未结算' group by goods_id";
 			pstat = conn.prepareStatement(querySql);
 			pstat.setInt(1, user_id);
 			rs = pstat.executeQuery();
 			while(rs.next()){
 				cart = new Cart();
-				cart.setId(rs.getInt("id"));
-				cart.setUser_id(rs.getInt("user_id"));
-				cart.setGoods_id(rs.getString("goods_id"));
 				cart.setCount(rs.getInt("count"));
-				cart.setAmount(rs.getFloat("amount"));
-				cart.setCart_status(rs.getString("cart_status"));
+				cart.setGoods_id(rs.getString("goods_id"));
 				list.add(cart);
 			}
 		} catch (SQLException e) {

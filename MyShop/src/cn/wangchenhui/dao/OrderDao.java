@@ -74,17 +74,17 @@ public class OrderDao implements IOrderDao {
 		// TODO Auto-generated method stub
 		Connection conn  = null;
 		PreparedStatement pstat = null;
-		String sql = "update user_ord set id=?,ord_id=?,user_id=?,goods_id=?,post_date=?, ord_status = ? ,amount = ? where ord_id =?";
+		String sql = "update user_ord set id=?,user_id=?,goods_id=?,post_date=?, ord_status = ? ,amount = ? where ord_id =?";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
 			pstat.setInt(1, order.getId());
-			pstat.setString(2,order.getOrd_id());
-			pstat.setInt(3, order.getUser_id());
-			pstat.setString(4, order.getGoods_id());
-			pstat.setString(5, order.getPost_date());
-			pstat.setString(6, order.getOrd_status());
-			pstat.setFloat(7, order.getAmount());
+			pstat.setInt(2, order.getUser_id());
+			pstat.setString(3, order.getGoods_id());
+			pstat.setString(4, order.getPost_date());
+			pstat.setString(5, order.getOrd_status());
+			pstat.setFloat(6, order.getAmount());
+			pstat.setString(7, order.getOrd_id());
 			pstat.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -317,7 +317,7 @@ public class OrderDao implements IOrderDao {
 	public List<Order> commentList(String goods_id){
 		Connection conn  = null;
 		PreparedStatement pstat = null;
-		String sql = "select * from user_ord where goods_id =?";
+		String sql = "select * from user_ord where goods_id =? group by ord_id order by id desc limit 0,3 ";
 		ResultSet rs = null;
 		Order order = null;
 		List<Order> list = new ArrayList<Order>();

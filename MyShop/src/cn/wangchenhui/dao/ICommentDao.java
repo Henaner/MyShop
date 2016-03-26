@@ -19,4 +19,5 @@ public interface ICommentDao {
 	Comment getLoad(String ord_id);
 	List<Comment> getTop6(String ord_id);
 	Pager<Comment> list(String condition);
+	Comment getComment(String ord_id);
 }

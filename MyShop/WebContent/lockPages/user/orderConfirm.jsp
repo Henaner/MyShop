@@ -9,7 +9,7 @@
 	IOrderDao orderDao = DaoFactory.getOrderDao();
 	Order order = orderDao.load(ord_id);
 	try{
-		order.setOrd_status("2");
+		order.setOrd_status("3");
 		orderDao.update(order);
 		response.sendRedirect(request.getContextPath()+"/lockPages/user/orderManage.jsp");
 	}catch(Exception e){

@@ -49,8 +49,9 @@
 			%>
 		</table>
 		<%
+			if(comment == null){}else{
 			Order order = orderDao.load(ord_id);
-			if(comment.getAdvice()!=null||!"".equals(comment.getAdvice().trim())){
+			if(comment.getAdvice()==null||"".equals(comment.getAdvice().trim())){}else{
 		%>
 			<table>
 				<tr>
@@ -75,6 +76,7 @@
 				
 			</table>
 		<%
+				}
 			}
 		%>
 		

@@ -43,23 +43,37 @@
 				<%
 					if(order.getOrd_status().equals("0")){
 				%>
-				<td>未发货</td>
+				<td><a href="<%=request.getContextPath()%>/lockPages/goods/order.jsp?user_id=<%=user_id %>" target="_parent">去付款</a></td>
 				<%
 					}else if(order.getOrd_status().equals("1")){
 				%>
-				<td><input type="button" onclick="window.location.href='<%=request.getContextPath() %>/lockPages/user/orderConfirm.jsp?ord_id=<%=order.getOrd_id() %>'" value="确认收货"></td>
+				<td>未发货</td>
 				<%
 					}else if(order.getOrd_status().equals("2")){
 				%>
-				<td><input type="button" onclick="window.location.href='<%=request.getContextPath() %>/lockPages/user/evaluate.jsp?ord_id=<%=order.getOrd_id() %>'" value="评价"></td>
+				<td><input type="button" onclick="window.location.href='<%=request.getContextPath() %>/lockPages/user/orderConfirm.jsp?ord_id=<%=order.getOrd_id() %>'" value="确认收货"></td>
+				<%
+					}else if(order.getOrd_status().equals("3")){
+				%>
+					<td><input type="button" onclick="window.location.href='<%=request.getContextPath() %>/lockPages/user/evaluate.jsp?ord_id=<%=order.getOrd_id() %>'" value="评价"></td>
 				<%
 					}else{
 				%>
-					<td>订单已完成</td>
+				<td>订单已完成</td>
 				<%
 					}
 				%>
-				<td width="30%"><a href="<%=request.getContextPath()%>/lockPages/user/ordDetail.jsp?ord_id=<%=order.getOrd_id()%>" target="main">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/lockPages/user/ordDel.jsp?ord_id=<%=order.getOrd_id()%>">删除</a></td>
+				<%
+					if(order.getOrd_status().equals("0")){
+				%>
+				<td width="30%"><a href="<%=request.getContextPath()%>/lockPages/user/ordDetail.jsp?ord_id=<%=order.getOrd_id()%>" target="main">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/lockPages/user/ordDel.jsp?ord_id=<%=order.getOrd_id()%>">取消订单</a></td>
+				<%
+					}else{
+				%>
+				<td width="30%"><a href="<%=request.getContextPath()%>/lockPages/user/ordDetail.jsp?ord_id=<%=order.getOrd_id()%>" target="main">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/lockPages/user/ordDel.jsp?ord_id=<%=order.getOrd_id()%>">删除订单</a></td>
+				<%
+					}
+				%>
 			</tr>
 			<%
 				}

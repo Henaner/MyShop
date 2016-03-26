@@ -36,6 +36,7 @@
 				<td>订单编号</td>
 				<td>生成日期</td>
 				<td>用户id</td>
+				<td>总金额</td>
 				<td>订单状态</td>
 			</tr>
 			<%
@@ -45,18 +46,23 @@
 				<td><%=order.getOrd_id() %></td>
 				<td><%=order.getPost_date()%></td>
 				<td><%=order.getUser_id()%></td>
+				<td><%=order.getAmount() %>￥</td>
 				<%
 					if(order.getOrd_status().equals("0")){
 				%>
-				<td><a href="<%=request.getContextPath()%>/lockPages/admin/sendOrder.jsp?ord_id=<%=order.getOrd_id()%>" title="单击启用">去发货</a></td>
+				<td>未付款</td>
 				<%
 					}else if(order.getOrd_status().equals("1")){
 				%>
+				<td><a href="<%=request.getContextPath()%>/lockPages/admin/sendOrder.jsp?ord_id=<%=order.getOrd_id()%>" title="单击启用">去发货</a></td>
+				<%
+					}else if(order.getOrd_status().equals("2")){
+				%>
 				<td><font color="green">待收货</font></td>
 				<%
-					}else{
+					}else {
 				%>
-				<td><font color="red">已完成</font></td>
+				<td>已完成</td>
 				<%
 					}
 				%>

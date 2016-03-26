@@ -103,7 +103,7 @@
 					<p align="center"><font color="#9D2A29"><%=hot_goods[3].getPrice()%>￥</font></p>
 				</div>
 				
-				<div onclick="window.location.href='<%=request.getContextPath() %>/catagory.jsp?goods_id=<%=hot_goods[4].getGoods_id()  %>'" style="cursor:pointer;width:210px;height:330px;border:solid 1px #9D2A29;float:left;margin:15px 95px;">
+				<div onclick="window.location.href='<%=request.getContextPath() %>/product.jsp?goods_id=<%=hot_goods[4].getGoods_id()  %>'" style="cursor:pointer;width:210px;height:330px;border:solid 1px #9D2A29;float:left;margin:15px 95px;">
 					<div id="goods_title" style=" width:210px;height:80px;background:#CCCCCC;">
 						<!--这里是商品的标题-->
 						<%=hot_goods[4].getGoods_title()%>
@@ -167,7 +167,7 @@
 					<p align="center"><font color="#9D2A29"><%=new_goods[3].getPrice()%>￥</font></p>
 				</div>
 				
-				<div onclick="window.location.href='<%=request.getContextPath() %>/catagory.jsp?goods_id=<%=new_goods[4].getGoods_id()  %>'" style="cursor:pointer;width:210px;height:330px;border:solid 1px #9D2A29;float:left;margin:15px 95px;">
+				<div onclick="window.location.href='<%=request.getContextPath() %>/product.jsp?goods_id=<%=new_goods[4].getGoods_id()  %>'" style="cursor:pointer;width:210px;height:330px;border:solid 1px #9D2A29;float:left;margin:15px 95px;">
 					<div id="goods_title" style=" width:210px;height:80px;background:#CCCCCC;">
 						<!--这里是商品的标题-->
 						<%=new_goods[4].getGoods_title()%>

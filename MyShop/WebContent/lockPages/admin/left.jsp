@@ -20,13 +20,13 @@
 		<div style="cursor:pointer;" id="left_div_user" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商城会员管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_user_panel" class="left_div_panel" align="center">
 		<br>
-				<a href="<%=request.getContextPath()%>/lockPages/user/userList.jsp" target="main">商城会员管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/admin/userList.jsp" target="main">商城会员管理</a><br>
 		</div>
 		<!-- 用户订单 -->
 		<div style="cursor:pointer;" id="left_div_order" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>用户订单管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>
 		<div id="left_div_order_panel" class="left_div_panel" align="center">
 				<br>
-				<a href="<%=request.getContextPath()%>/lockPages/user/ordManage.jsp" target="main">用户订单管理</a><br>
+				<a href="<%=request.getContextPath()%>/lockPages/admin/ordManage.jsp" target="main">用户订单管理</a><br>
 		</div>
 		<!-- 商品管理 -->
 		<div style="cursor:pointer;" id="left_div_goods" class="left_div"><img id="arrow" src="<%=request.getContextPath()%>/images/icon/backstage/Arrow_Right_24px_523784_easyicon.net.png"><p>商品管理</p><div id="img"><img src="<%=request.getContextPath()%>/images/icon/backstage/settings_16px_1187941_easyicon.net.png"></div></div>

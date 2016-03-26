@@ -10,7 +10,7 @@
 </head>
 <body>
 <%
-	User loginUser = (User)session.getAttribute("loginUser");
+	User loginUser = (User)session.getAttribute("loginOpt");
 %>
 <jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 <br><br>

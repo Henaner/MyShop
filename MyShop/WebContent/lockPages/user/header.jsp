@@ -29,13 +29,13 @@
 	<div style="width:100%;margin-left:-8px;height:50px;margin-top:-8px;background-color:#F2F2F2;" id="header_div">
 		<div id="welcome_words">嗨！欢迎您来到家乡味商城</div>
 		<div id="index_opt" style="margin-left:1100px;">
-		<div id="catagory" style="margin-left:-700px;width:720px;margin-top:9px;">
-			<a href="<%=request.getContextPath() %>/catagory.jsp?" target="_blank"><div id="catagory_1" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">肉类精选</div></a>
-			<a href="" target="_blank"><div id="catagory_2" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">粮油米面</div></a>
-			<a href="" target="_blank"><div id="catagory_3" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">果蔬副食</div></a>
-			<a href="" target="_blank"><div id="catagory_4" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">名茶名酒</div></a>
-			<a href="" target="_blank"><div id="catagory_5" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">野生特产</div></a>
-			<a href="" target="_blank"><div id="catagory_6" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:7px;border-top-right-radius:7px;border:solid 1px #CCCCCC;height:25px;width:58px;float:left;margin:0 15px;">工艺礼品</div></a>
+		<div id="catagory" style="margin-left:-700px;width:720px;margin-top:0px; line-height:35px;   ">
+			<a href="<%=request.getContextPath() %>/category.jsp?category=1" target="_blank"><div id="catagory_1" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:15px;border-top-right-radius:15px;border:solid 1px #CCCCCC;height:35px;width:58px;float:left;margin:0 15px;">肉类精选</div></a>
+			<a href="<%=request.getContextPath() %>/category.jsp?category=2" target="_blank"><div id="catagory_2" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:15px;border-top-right-radius:15px;border:solid 1px #CCCCCC;height:35px;width:58px;float:left;margin:0 15px;">粮油米面</div></a>
+			<a href="<%=request.getContextPath() %>/category.jsp?category=3" target="_blank"><div id="catagory_3" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:15px;border-top-right-radius:15px;border:solid 1px #CCCCCC;height:35px;width:58px;float:left;margin:0 15px;">果蔬副食</div></a>
+			<a href="<%=request.getContextPath() %>/category.jsp?category=4" target="_blank"><div id="catagory_4" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:15px;border-top-right-radius:15px;border:solid 1px #CCCCCC;height:35px;width:58px;float:left;margin:0 15px;">名茶名酒</div></a>
+			<a href="<%=request.getContextPath() %>/category.jsp?category=5" target="_blank"><div id="catagory_5" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:15px;border-top-right-radius:15px;border:solid 1px #CCCCCC;height:35px;width:58px;float:left;margin:0 15px;">野生特产</div></a>
+			<a href="<%=request.getContextPath() %>/category.jsp?category=6" target="_blank"><div id="catagory_6" style="cursor:pointer;color:white;background:#9D2A29;border-top-left-radius:15px;border-top-right-radius:15px;border:solid 1px #CCCCCC;height:35px;width:58px;float:left;margin:0 15px;">工艺礼品</div></a>
 		</div>
 		<%
 			if(loginUser==null){

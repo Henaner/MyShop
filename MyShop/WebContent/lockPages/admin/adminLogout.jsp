@@ -7,7 +7,7 @@
 </head>
 <body>
 	<%
-		session.invalidate();
+		session.removeAttribute("loginOpt");
 		response.sendRedirect("admin.jsp");
 	%>
 </body>

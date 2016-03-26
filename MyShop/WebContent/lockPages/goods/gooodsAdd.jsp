@@ -15,7 +15,7 @@
 	<jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 <br><br>
 <%
-	User user = (User)session.getAttribute("loginUser");
+	User user = (User)session.getAttribute("loginOpt");
 %>
 	<form action="<%=request.getContextPath() %>/GoodsAdd" method="post" enctype="multipart/form-data" name="goods_add">
 		<div align="center" style="width:90%;height:450px;border:solid 1px #7F0101;margin-left:60px;margin-top:10px;">
@@ -37,7 +37,7 @@
 						</div>
 						<div style="postion:absolute;margin-left:290px;margin-top:-40px;">类型：
 							<input type="radio" name="iCheck" id="gender"
-							class="type" checked value="新">&nbsp;新&nbsp;&nbsp;<input type="radio"
+							class="type"  value="新">&nbsp;新&nbsp;&nbsp;<input type="radio"
 							name="iCheck" id="type" class="gender" value="热">&nbsp;热
 						&nbsp;&nbsp;|</div>
 						<div style="postion:absolute;margin-left:460px;margin-top:-23px;">
@@ -45,6 +45,16 @@
 						</div>
 						<div style="postion:absolute;margin-left:690px;margin-top:-23px;">
 							库存：<input type="text" size="10" name="goods_stock">&nbsp;&nbsp;|
+						</div>
+						<div style="margin-left:838px;margin-top:-23px;">类别：
+							<select name="category">
+								<option value="肉类精选">肉类精选</option>
+								<option value="粮油米面">粮油米面</option>
+								<option value="果蔬副食">果蔬副食</option>
+								<option value="名茶名酒">名茶名酒</option>
+								<option value="野生特产">野生特产</option>
+								<option value="工艺礼品">工艺礼品</option>
+							</select>
 						</div>
 					</td>
 				</tr>

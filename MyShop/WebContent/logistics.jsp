@@ -11,7 +11,7 @@
 		<div align="left" style="background: #9D2A29;width:100%;height:25px;">&nbsp;&nbsp;&nbsp;&nbsp;<font color="white">送货方式</font></div>
 		<div align="left" style="width:60%;height:100%;" >
 			<div class="helpcontent">
-<p>目前，特产优联全部商品均支持普通快递送货上门服务(<span style="color:rgb(255, 0, 0)">注：交通不方便的地区只能送货到县城自提</span>)。<br />
+<p>目前，家乡味全部商品均支持普通快递送货上门服务(<span style="color:rgb(255, 0, 0)">注：交通不方便的地区只能送货到县城自提</span>)。<br />
 收货人所在地区是中国大陆，并在送货上门范围内，可以选择普通快递送货上门的送货方式。具体请参见&ldquo;<a href="http://www.techan.com/help/56.html#">配送范围及配送费用收取标准</a>&rdquo;。</p>
 
 <p>为保障您的权益，请您在收货时注意以下环节：<br />

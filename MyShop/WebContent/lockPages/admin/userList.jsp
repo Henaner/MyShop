@@ -20,7 +20,7 @@
 	Pager<User> pages = userDao.list(condition);
 	int totalPage = pages.getTotalPage();
 	int totalRecord = pages.getTotalRecord();
-	User loginUser = (User)session.getAttribute("loginUser");
+	User loginUser = (User)session.getAttribute("loginOpt");
 %>
 	<jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 	<div align="center" style="position:absolute;width:98%;height:450px;border:solid 1px #7F0101;margin-left:2px;margin-top:50px;">

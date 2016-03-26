@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="cn.wangchenhui.model.Cart"%>
 <%@page import="java.awt.font.TextLayout.CaretPolicy"%>
 <%@page import="cn.wangchenhui.dao.ICartDao"%>
@@ -22,23 +23,27 @@
 		float amount = count*price;
 		String post_date = DateFormat.formatLong(new Date());
 		String cart_status = "未结算";
-		
-		
-		Cart cart = new Cart();
-		cart.setUser_id(user_id);
-		cart.setGoods_id(goods_id);
-		cart.setPost_date(post_date);
-		cart.setCount(count);
-		cart.setAmount(amount);
-		cart.setCart_status(cart_status);
-		
-		
 		ICartDao cartDao = DaoFactory.getCartDao();
-		try{
+		
+		Cart cart = null;
+		if(cartDao.getload(goods_id) != null){
+			cart = cartDao.getload(goods_id);
+			System.out.println(cart.getId());
+			cart.setCount(count+cart.getCount());
+			cart.setPost_date(post_date);
+			cart.setAmount(count*price+cart.getAmount());
+			cartDao.update(cart);
+		}else{
+			cart = new Cart();
+			cart.setUser_id(user_id);
+			cart.setGoods_id(goods_id);
+			cart.setPost_date(post_date);
+			cart.setCount(count);
+			cart.setAmount(amount);
+			cart.setCart_status(cart_status);
 			cartDao.add(cart);
-			response.sendRedirect(request.getContextPath() +"/product.jsp?goods_id="+goods_id);
-		}catch(Exception e){
-			e.printStackTrace();
 		}
+		
+			response.sendRedirect(request.getContextPath() +"/product.jsp?goods_id="+goods_id);
 	}
 %>

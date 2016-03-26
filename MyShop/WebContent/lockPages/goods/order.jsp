@@ -1,3 +1,6 @@
+<%@page import="cn.wangchenhui.model.Goods"%>
+<%@page import="cn.wangchenhui.model.Order"%>
+<%@page import="cn.wangchenhui.dao.IOrderDao"%>
 <%@page import="cn.wangchenhui.dao.OrderDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -47,9 +50,14 @@
         int minute = calendar.get(Calendar.MINUTE);
         int seconde = calendar.get(Calendar.SECOND);
         int rndNum = (int)(Math.random()*1000+1);
-        float amount = 0.00f;
+        float totalAmount = 0.0F;
         String post_date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String ord_id = String.valueOf(year)+String.valueOf(month)+String.valueOf(day)+String.valueOf(hour)+String.valueOf(minute)+String.valueOf(seconde)+String.valueOf(rndNum);
+        
+        IOrderDao orderDao = DaoFactory.getOrderDao();
+        Order order = null;
+        Goods goods = null;
+    	
 	%>
 	<hr style="position:absolute;width:90%;height:2px;border:none;border-top:2px dotted #9D2A29; margin-top:200px;margin-left:60px;">
 	<div  style="position: absolute;margin-top:210px;width:99%;margin-left:3px;">
@@ -81,22 +89,33 @@
 					<%
 						for(Cart cart:list)	{
 					%>
-					<tr align="center">
+					<tr align="center" id="tr">
 						<td width="20%"><img src="<%=request.getContextPath()%>/upload/goodsImg/<%=goodsDao.load(cart.getGoods_id()).getImg_name() %>" style="width:50px;height:50px;border:solid 1px #CCCCCC;"></td>
 						<td><%=goodsDao.load(cart.getGoods_id()).getGoods_title() %></td>
 						<td><%=goodsDao.load(cart.getGoods_id()).getPrice() %>￥</td>
 						<td><%=cart.getCount() %></td>
 						<td><%=post_date %></td>
-						<td><%=cart.getAmount() %>￥</td>
+						<td id="amount"><%=goodsDao.load(cart.getGoods_id()).getPrice()*cart.getCount() %>￥</td>
 					</tr>
 					<%
-					 amount += cart.getAmount();
+						totalAmount += goodsDao.load(cart.getGoods_id()).getPrice()*cart.getCount();
+				    		order= new Order();
+				    		goods = goodsDao.load(cart.getGoods_id());
+				    		order.setOrd_id(ord_id);
+				    		order.setGoods_id(cart.getGoods_id());
+				    		order.setPost_date(DateFormat.formatLong(new Date()));
+				    		order.setUser_id(user_id);
+				    		order.setAmount(totalAmount);
+				    		orderDao.add(order);
+				    		cartDao.delete(cart.getId());
+				    		goods.setCurr_stock(goods.getCurr_stock()-cart.getCount());
+				    		goodsDao.update(goods);
 						}
 					%>
 				</table>
 			</div>
-			<div style="margin-left:60px;position:absolute;margin-top:2px;;"><p style="font-size:18px;color:white;"><b>总金额:</b><%=amount%>￥</p></div>
-			<div style="margin-left:1050px;position:absolute;margin-top:2px;"><input type="button" onclick= "window.location.href='<%=request.getContextPath() %>/lockPages/goods/doOrder.jsp?user_id=<%=user_id %>&ord_id=<%=ord_id %>&amount=cart.getAmount()'" style="color:#9D2A29;cursor:pointer;height:47px;width:120px;font-size:18px;left:900px;" value="下单"></div>
+			<div style="margin-left:60px;position:absolute;margin-top:2px;;"><p style="font-size:18px;color:white;"><b>总金额:<label id="total"></label></b><%=totalAmount%>￥</p></div>
+			<div style="margin-left:1050px;position:absolute;margin-top:2px;"><input type="button" onclick= "window.location.href='<%=request.getContextPath() %>/lockPages/goods/doOrder.jsp?user_id=<%=user_id %>&ord_id=<%=ord_id %>'" style="color:#9D2A29;cursor:pointer;height:47px;width:120px;font-size:18px;left:900px;" value="去支付"></div>
 		</div>
 	</div>
 	

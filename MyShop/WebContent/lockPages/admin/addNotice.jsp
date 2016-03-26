@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%
-	User loginUser = (User)session.getAttribute("loginUser");
+	User loginUser = (User)session.getAttribute("loginOpt");
 %>
 <jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 <br><br>
@@ -30,6 +30,6 @@
 	</form>
 </body>
 <script type="text/javascript">
-    CKEDITOR.replace('notice_content', { height: '273px', width: '970px' });
+    CKEDITOR.replace('notice_content', { height: '271px', width: '970px' });
 </script>
 </html>

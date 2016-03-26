@@ -1,3 +1,6 @@
+<%@page import="cn.wangchenhui.model.Order"%>
+<%@page import="java.util.List"%>
+<%@page import="cn.wangchenhui.dao.IOrderDao"%>
 <%@page import="cn.wangchenhui.model.Cart"%>
 <%@page import="cn.wangchenhui.dao.DaoFactory"%>
 <%@page import="cn.wangchenhui.dao.ICartDao"%>
@@ -19,17 +22,27 @@
 			int user_id = user.getUser_id();
 			ICartDao cartDao = DaoFactory.getCartDao();
 			int amount = cartDao.getAmout(user_id);
-			if(amount != 0){
-		%>
-		<div style="margin-top:100px;margin-left:150px;">
-			购物车状态：购物车中有商品未付款，前往<a href="<%=request.getContextPath()%>/lockPages/goods/order.jsp?user_id=<%=user_id%>" target="_parent">付款</a>
-		</div>
-		<%
-			}else{
+			if(amount == 0){
 		%>
 		<div style="margin-top:100px;margin-left:150px;">
 			购物车状态：购物车没有商品，去<a href="<%=request.getContextPath()%>/index.jsp" target="_parent">添加</a>点吧
 		</div>
+		<%
+			}
+			IOrderDao orderDao = DaoFactory.getOrderDao();
+			List<Order> list = orderDao.list(user_id);
+			int count = 0;
+			for(Order order:list){
+				String order_status = order.getOrd_status();
+				if(order_status.equals("0")){
+					count++;
+			}
+		 }
+		if(count > 0){
+		%>
+			<div style="margin-top:100px;margin-left:150px;">
+				订单状态：订单中有未付款的商品哦~
+			</div>
 		<%
 			}
 		%>

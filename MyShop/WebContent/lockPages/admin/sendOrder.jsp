@@ -9,9 +9,9 @@
 	IOrderDao orderDao = DaoFactory.getOrderDao();
 	Order order = orderDao.load(ord_id);
 	try{
-		order.setOrd_status("1");
+		order.setOrd_status("2");
 		orderDao.update(order);
-		response.sendRedirect(request.getContextPath()+"/lockPages/user/ordManage.jsp");
+		response.sendRedirect(request.getContextPath()+"/lockPages/admin/ordManage.jsp");
 	}catch(Exception e){
 		e.printStackTrace();
 	}

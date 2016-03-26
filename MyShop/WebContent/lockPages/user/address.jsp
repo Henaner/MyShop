@@ -43,7 +43,8 @@
 						<td><input type="text" name="telphone" size="100px" value="<%=address.getTelphone()%>"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="确认" style="cursor:pointer;border-radius:5px;width:80px;height:30px;background:#9D2A29;color:white;"></td>
+						<td ><input type="submit" value="确认" style="cursor:pointer;border-radius:5px;width:80px;height:30px;background:#9D2A29;color:white;"></td>
+						<td ><input type="button" onclick="cancel_change();" value="取消" style="cursor:pointer;border-radius:5px;width:80px;height:30px;background:#9D2A29;color:white;"></td>
 					</tr>
 				</table>
 			</form>
@@ -54,6 +55,10 @@
 	function addr_see(){
 		var objDiv = document.getElementById("hidden_addr");
 		objDiv.style.display="block";
+	}
+	function cancel_change(){
+		var objDiv = document.getElementById("hidden_addr");
+		objDiv.style.display="none";
 	}
 </script>
 </html>

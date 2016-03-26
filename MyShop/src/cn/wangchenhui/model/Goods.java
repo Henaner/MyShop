@@ -12,12 +12,7 @@ public class Goods {
 	private String goods_title;
 	private String goods_desc;
 	private String img_name;
-	public String getImg_name() {
-		return img_name;
-	}
-	public void setImg_name(String img_name) {
-		this.img_name = img_name;
-	}
+	private String category;
 	private float price;
 	private int stock;
 	private String post_date;
@@ -25,6 +20,18 @@ public class Goods {
 	private int curr_stock;
 	private int user_id;
 	private String goods_status;
+	public String getImg_name() {
+		return img_name;
+	}
+	public void setImg_name(String img_name) {
+		this.img_name = img_name;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getGoods_status() {
 		return goods_status;
 	}

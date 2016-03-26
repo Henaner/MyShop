@@ -12,10 +12,13 @@ import cn.wangchenhui.model.Pager;
  */
 public interface ICartDao {
 	void add(Cart cart);
+	Cart load(String goods_id);
 	void update(Cart cart);
 	void delete(int id);
+	void deleteOfUser(int user_id);
 	Pager<Cart> list();
 	int getCount(int user_id);
 	List<Cart> getList(int user_id);
 	int getAmout(int user_id);
+	Cart getload(String goods_id);
 }

@@ -17,7 +17,7 @@
 %>
 	<jsp:include page="/lockPages/admin/inc/top.jsp"></jsp:include>
 	<div align="center" style="position:absolute;width:98%;height:450px;border:solid 1px #7F0101;margin-left:2px;margin-top:50px;">
-		<form action="<%=request.getContextPath()%>/lockPages/user/submitReply.jsp">
+		<form action="<%=request.getContextPath()%>/lockPages/admin/submitReply.jsp">
 		<table>
 			<tr>
 				<td>顾客评论<input type="hidden" name="id" value="<%=id%>"></td>

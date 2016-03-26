@@ -1,3 +1,5 @@
+<%@page import="cn.wangchenhui.model.User"%>
+<%@page import="java.util.List"%>
 <%@page import="cn.wangchenhui.model.Order"%>
 <%@page import="cn.wangchenhui.dao.ICommentDao"%>
 <%@page import="cn.wangchenhui.dao.IUserDao"%>
@@ -25,9 +27,6 @@
 		String goods_id = request.getParameter("goods_id");
 		IGoodsDao goodsDao = DaoFactory.getGoodsDao();
 		Goods goods = goodsDao.load(goods_id);
-		IOrderDao orderDao =DaoFactory.getOrderDao();
-		IUserDao userDao = DaoFactory.getUserDao();
-		
 	%>
 	<!-- 这里控制的是图片的展示，已经加入购物车和购买的功能 -->
 	<hr style="position:absolute;width:90%;height:2px;border:none;border-top:2px dotted #9D2A29; margin-top:190px;margin-left:60px;">
@@ -79,16 +78,58 @@
 	<div id="goods_desc" style="position: absolute;margin-top:600px;">
 		<div style="position:absolute;margin-top:-8px;margin-left:62px;background-color:#9D2A29;border:solid 1px #9D2A29;width:1208px;height:40px;backgroud-color:#9D2A29;"><p align="center" style="color:white;margin-top:-4px;"><font size="+3">商品详情</font></p></div>
 		<br>
-		<div id="goods_desc_text" style="postion:absolute;font-size:16px;width:70%;margin-left:200px;margin-top:100px;" >
+		<div id="goods_desc_text" style="postion:absolute;font-size:16px;width:300%;height:500px;margin-left:200px;margin-top:20px;" >
 			<%=goods.getGoods_desc() %>
 		</div>
-		
-		
-		 
 	</div>
-	
+	<hr style="position:absolute;width:90%;height:2px;border:none;border-top:2px dotted #9D2A29; margin-top:1190px;margin-left:60px;">
+	<div id="goods_desc" style="position: absolute;margin-top:1200px;">
+		<div style="position:absolute;margin-top:-8px;margin-left:62px;background-color:#9D2A29;border:solid 1px #9D2A29;width:1208px;height:40px;backgroud-color:#9D2A29;"><p align="center" style="color:white;margin-top:-4px;"><font size="+3">商品部分评价</font></p></div>
+		<br>
+		<!-- 默认取3条评价 -->
+		<div align="center" id="goods_desc_text" style="postion:absolute;font-size:16px;width:100%;margin-left:300px;margin-top:20px;" >
+			<%
+				IOrderDao orderDao = DaoFactory.getOrderDao();
+				ICommentDao commentDao = DaoFactory.getCommentDao();
+				List<Order> list = orderDao.commentList(goods_id);
+				IUserDao userDao = DaoFactory.getUserDao();
+				String[] orders = new String[list.size()];
+				if(list.size() == 0 ){
+				%>
+					<div align="center" style="height:250px;width:500px;margin:30px auto;">
+						<img src="<%=request.getContextPath()%>/images/comment.png">
+						<span style="font-size:22px;color:#9D2A29;"><b>该商品暂无评价</b></span>
+					</div>
+				<%
+				}else{
+					System.out.println(list.size());
+					for(int i=0;i<list.size();i++){
+						orders[i] = ((Order)list.get(i)).getOrd_id();
+						System.out.println(orders[i]);
+					}
+					for(int i=0;i<list.size();i++){
+						if(commentDao.getComment(orders[i]) != null){
+							if(userDao.load(commentDao.getComment(orders[i]).getUser_id())!=null ){
+			%>
+					<div align="left" style="border:solid 1px #CCCCCC;height:250px;width:500px;margin:30px auto;">
+						用户：<%=userDao.load(commentDao.getComment(orders[i]).getUser_id()).getUser_name() %> &nbsp;&nbsp;评价等级：<font color="red"><%=commentDao.getComment(orders[i]).getEval_rank() %></font><br>
+						用户留言： <textarea rows="3" readonly="readonly" disabled cols="58" style="resize:none"><%=commentDao.getComment(orders[i]).getAdvice() %></textarea><br>
+			<%
+				if(commentDao.getComment(orders[i]).getReply() == null||"".equals(commentDao.getComment(orders[i]).getReply() )){}else{
+			%>
+						管理员回复：<br><textarea rows="3" readonly="readonly"  disabled cols="58" style="resize:none"><%=commentDao.getComment(orders[i]).getReply() %></textarea>
+					</div>
+			<%
+								}
+							}
+						}
+					}
+				}
+			%>
+		</div>
+	</div>
 	<!-- 导入底部的版权页 -->
-	<div style="position:absolute;margin-top:2000px;margin-left:150px;">
+	<div style="position:absolute;margin-top:1500px;margin-left:150px;">
 		<jsp:include page="/bottom.jsp"></jsp:include>
 	</div>
 </body>

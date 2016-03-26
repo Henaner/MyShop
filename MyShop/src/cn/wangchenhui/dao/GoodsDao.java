@@ -24,7 +24,7 @@ public class GoodsDao implements IGoodsDao{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		PreparedStatement pstat = null;
-		String sql = "insert into goods values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into goods values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
@@ -39,6 +39,7 @@ public class GoodsDao implements IGoodsDao{
 			pstat.setInt(9,goods.getCurr_stock());
 			pstat.setInt(10, goods.getUser_id());
 			pstat.setString(11, goods.getGoods_status());
+			pstat.setString(12,goods.getCategory());
 			pstat.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -55,7 +56,7 @@ public class GoodsDao implements IGoodsDao{
 		Connection conn = null;
 		PreparedStatement pstat = null;
 		String goods_id = goods.getGoods_id();
-		String sql = "update goods set goods_title=?,img_name=?,goods_desc=?,price=?,stock=?,post_date=?,goods_type=?,curr_stock=?,user_id=?,goods_status=? where goods_id =?";
+		String sql = "update goods set goods_title=?,img_name=?,goods_desc=?,price=?,stock=?,post_date=?,goods_type=?,curr_stock=?,user_id=?,goods_status=?,category=? where goods_id =?";
 		conn = DBConnection.getConnection();
 		try {
 			pstat = conn.prepareStatement(sql);
@@ -69,7 +70,8 @@ public class GoodsDao implements IGoodsDao{
 			pstat.setInt(8,goods.getCurr_stock());
 			pstat.setInt(9,goods.getUser_id());
 			pstat.setString(10,goods.getGoods_status());
-			pstat.setString(11,goods_id);
+			pstat.setString(11,goods.getCategory());
+			pstat.setString(12,goods_id);
 			pstat.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -128,6 +130,7 @@ public class GoodsDao implements IGoodsDao{
 				goods.setUser_id(rs.getInt("user_id"));
 				goods.setCurr_stock(rs.getInt("curr_stock"));
 				goods.setGoods_status(rs.getString("goods_status"));
+				goods.setCategory(rs.getString("category"));
 			}
 			
 		} catch (SQLException e) {
@@ -166,6 +169,7 @@ public class GoodsDao implements IGoodsDao{
 				goods.setUser_id(rs.getInt("user_id"));
 				goods.setCurr_stock(rs.getInt("curr_stock"));
 				goods.setGoods_status(rs.getString("goods_status"));
+				goods.setCategory(rs.getString("category"));
 				list.add(goods);
 			}
 			
@@ -220,6 +224,7 @@ public class GoodsDao implements IGoodsDao{
 				goods.setUser_id(rs.getInt("user_id"));
 				goods.setCurr_stock(rs.getInt("curr_stock"));
 				goods.setGoods_status(rs.getString("goods_status"));
+				goods.setCategory(rs.getString("category"));
                 list.add(goods);
             }
             /*计数*/
@@ -290,6 +295,7 @@ public class GoodsDao implements IGoodsDao{
 				goods.setUser_id(rs.getInt("user_id"));
 				goods.setCurr_stock(rs.getInt("curr_stock"));
 				goods.setGoods_status(rs.getString("goods_status"));
+				goods.setCategory(rs.getString("category"));
                 list.add(goods);
             }
             /*计数*/
@@ -355,6 +361,80 @@ public class GoodsDao implements IGoodsDao{
 				goods.setUser_id(rs.getInt("user_id"));
 				goods.setCurr_stock(rs.getInt("curr_stock"));
 				goods.setGoods_status(rs.getString("goods_status"));
+				goods.setCategory(rs.getString("category"));
+                list.add(goods);
+            }
+            /*计数*/
+            pstat = conn.prepareStatement(sqlCount);
+            rs = pstat.executeQuery();
+            int totalRecord = 0;
+            while(rs.next()){
+                totalRecord = rs.getInt(1);
+            }
+            int totalPage = (totalRecord-1)/pageSize+1;
+            pages.setPageOffset(pageOffset);
+            pages.setPageSize(pageSize);
+            pages.setTotalRecord(totalRecord);
+            pages.setTotalPage(totalPage);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBConnection.close(conn);
+            DBConnection.close(pstat);
+            DBConnection.close(rs);
+        }
+        pages.setData(list);
+        return pages;
+	}
+
+	@Override
+	public Pager<Goods> getCategory(String category) {
+		Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement pstat = null;
+        Goods goods = null;
+        switch (category){
+	    	case "1": category = "肉类精选";break;
+	    	case "2": category = "粮油米面";break;
+	    	case "3": category = "果蔬副食";break;
+	    	case "4": category = "名茶名酒";break;
+	    	case "5": category = "野生特产";break;
+	    	case "6": category = "工艺礼品";break;
+        }
+        Pager<Goods> pages = new Pager<Goods>();
+        int pageOffset = SystemContext.getPageOffset();
+        int pageSize = SystemContext.getPageSize();
+        List<Goods> list = new ArrayList<Goods>();
+        try{
+
+            int start = pageOffset;
+            conn = DBConnection.getConnection();
+            String sql = "select * from goods";
+            String sqlCount = "select count(*) from goods";
+            if(category != null || !"".equals(category.trim())){
+                sql+=" where category like'%"+category+"%' and goods_status='在架'";
+                sqlCount+=" where category  like'%"+category+"%' and goods_status='在架'";
+            }
+            sql += " limit ?,?";
+            pstat = conn.prepareStatement(sql);
+            pstat.setInt(1,start);
+            pstat.setInt(2,pageSize);
+
+            rs = pstat.executeQuery();
+            while(rs.next()){
+            	goods = new Goods();
+            	goods.setGoods_id(rs.getString("goods_id"));
+				goods.setGoods_title(rs.getString("goods_title"));
+				goods.setImg_name(rs.getString("img_name"));
+				goods.setGoods_desc(rs.getString("goods_desc"));
+				goods.setPrice(rs.getFloat("price"));
+				goods.setStock(rs.getInt("stock"));
+				goods.setPost_date(rs.getString("post_date"));
+				goods.setGoods_type(rs.getString("goods_type"));
+				goods.setUser_id(rs.getInt("user_id"));
+				goods.setCurr_stock(rs.getInt("curr_stock"));
+				goods.setGoods_status(rs.getString("goods_status"));
+				goods.setCategory(rs.getString("category"));
                 list.add(goods);
             }
             /*计数*/
